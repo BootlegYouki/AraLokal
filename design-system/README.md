@@ -1,6 +1,6 @@
 # L.A.R.A Material Design 3 UI System
 
-> **Live Deployment:** [https://design-system-two-wheat.vercel.app](https://design-system-two-wheat.vercel.app)
+> **Live Deployment:** [https://lara-design-system.vercel.app](https://lara-design-system.vercel.app)
 
 
 This directory contains the visual and technical design system website for the **L.A.R.A** project, tailored for Philippine Public Elementary Schools (DepEd Grades 1 to 6).

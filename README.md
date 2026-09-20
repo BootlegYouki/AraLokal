@@ -126,7 +126,7 @@ flowchart TD
 
 ## Live Material Design 3 Reference
 
-* **Live Interactive Design System:** [https://design-system-two-wheat.vercel.app](https://design-system-two-wheat.vercel.app)
+* **Live Interactive Design System:** [https://lara-design-system.vercel.app](https://lara-design-system.vercel.app)
 * **Local Source:** [](./design-system/index.html)
 
 ## Full Product Requirements Document
