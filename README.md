@@ -108,9 +108,9 @@ flowchart TD
  OfferDownload -->|Download Completed| DeviceMode
  OfferDownload -->|Not Downloaded Yet| HubMode
 
- HubMode --> HubQueue{"Local Hub Inference Slots"}
- HubQueue -->|Slot Available (1-4)| Infer["Execute MiniCPM on Hub Host"]
- HubQueue -->|Slots Busy| QueueWait["FIFO Queue: 'Pangalawa ka sa pila (~4s)'"]
+ HubMode --> HubQueue["Local Hub Inference Slots"]
+ HubQueue -->|"Slot Available (1-4)"| Infer["Execute MiniCPM on Hub Host"]
+ HubQueue -->|"Slots Busy"| QueueWait["FIFO Queue: Pangalawa ka sa pila - est. 4s"]
  QueueWait --> Infer
  Infer --> StreamTokens["Stream Socratic Hints over WebSocket"]
 ```
