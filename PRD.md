@@ -479,3 +479,7 @@ sequenceDiagram
 | **Quiz Sync Accuracy** | Grade calculation and submission reliability | 100% accuracy in score recording across 40 simultaneous submissions. |
 | **Homework Photo Upload** | Upload success rate over local Wi-Fi | 100% across 40 concurrent submissions with offline queueing. |
 | **Resilience to Disconnects** | Unannounced Wi-Fi disconnection mid-quiz | 0% data loss; automatic submission upon reconnect. |
+| **Usability (SUS Score)** | System Usability Scale survey administered to DepEd teachers | SUS score >= 80.0 (Grade A / Excellent usability). |
+| **Software Quality (ISO 25010)** | Evaluation across Functional Suitability, Reliability, Usability | Mean Likert score >= 4.50 / 5.00 across all dimensions. |
+| **Disaster Recovery** | Database restore from USB backup after sudden power loss | 100% data recovery with zero corrupted records. |
+| **Day 0 Deployment** | Standalone installer (.exe/.deb) setup on fresh host laptop | Complete installation in < 3 minutes with zero CLI commands. |
