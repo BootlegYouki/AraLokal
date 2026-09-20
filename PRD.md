@@ -70,7 +70,7 @@ flowchart TD
  DeskUI["React Tailwind M3 UI"]
  DeskSQLite[("Local SQLite DB")]
  DeskVideo["HTML5 Video Player"]
- DeskAI["Optional Local SLM"]
+ DeskAI["Local SLM (llama.cpp) or Hub Stream"]
  end
  end
 
@@ -205,16 +205,21 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
- Start["Student Launches AraLokal App"] --> HardwareCheck{"Check Device Specs<br/>(ActivityManager RAM)"}
+ Start["Student Launches App on Mobile or Laptop"] --> DeviceType{"Device Platform"}
  
- HardwareCheck -->|Physical RAM < 6GB| HubMode["Hub-Assisted Mode (WebSocket)<br/>• Zero phone RAM allocated<br/>• Lightweight token streaming<br/>• Low battery consumption"]
- 
- HardwareCheck -->|Physical RAM ≥ 6GB| CheckModel{"Check Local Storage:<br/>minicpm-2b-q4.gguf exists?"}
- 
- CheckModel -->|Yes| DeviceMode["100% On-Device Mode (llama.cpp JNI)<br/>• Local execution, zero network usage<br/>• Works completely offline at home"]
- CheckModel -->|No| OfferDownload["Prompt Model Download<br/>(1.55 GB over classroom Wi-Fi)"]
- OfferDownload -->|Download Completed| DeviceMode
- OfferDownload -->|Not Downloaded Yet| HubMode
+ DeviceType -->|"Student Laptop / Lab PC"| DeskCheck{"Check Local Storage:<br/>Model GGUF exists?"}
+ DeskCheck -->|Yes| DeskLocal["100% On-Device Mode (llama.cpp CPU/GPU)<br/>• Zero network usage<br/>• Works completely offline at home"]
+ DeskCheck -->|No| DeskPrompt["Prompt Download or Stream from Hub"]
+ DeskPrompt --> DeskLocal
+ DeskPrompt --> HubMode
+
+ DeviceType -->|"Android Mobile Phone"| HardwareCheck{"Check Physical RAM<br/>(ActivityManager)"}
+ HardwareCheck -->|"RAM < 6GB"| HubMode["Hub-Assisted Mode (WebSocket)<br/>• Zero phone RAM burden<br/>• Lightweight token streaming"]
+ HardwareCheck -->|"RAM >= 6GB"| MobCheck{"Model GGUF exists?"}
+ MobCheck -->|Yes| MobLocal["100% On-Device Mode (llama.cpp JNI)<br/>• Works offline anywhere"]
+ MobCheck -->|No| MobPrompt["Prompt Model Download (1.55 GB)"]
+ MobPrompt --> MobLocal
+ MobPrompt --> HubMode
 
  HubMode --> HubQueue["Local Hub Inference Slots"]
  HubQueue -->|"Slot Available (1-4)"| Infer["Execute MiniCPM on Hub Host"]
@@ -419,7 +424,7 @@ sequenceDiagram
 | :--- | :--- | :--- |
 | **Mobile Client** | **Native Android (Kotlin + Jetpack Compose)** | First-party Google Material Design 3; lowest RAM footprint on 3GB/4GB Transsion/realme phones; native CameraX integration for homework photos; native C++/JNI binding to `llama.cpp`. |
 | **Mobile Local DB** | **Android Room (SQLite)** | Compile-time SQL validation, robust migrations, native coroutine/Flow support. |
-| **Desktop Client** | **Tauri + React + TypeScript + Tailwind CSS** | Ultra-lightweight binary (~15MB installer vs ~120MB Electron), low memory overhead on school computer lab PCs; styled with Material 3 design tokens. |
+| **Desktop Client** | **Tauri + React + TypeScript + Tailwind CSS** | Ultra-lightweight binary (~15MB installer vs ~120MB Electron), low memory overhead on student laptops & lab PCs; styled with Material 3 tokens; runs MiniCPM5-2B via bundled llama.cpp or Hub streaming. |
 | **Local Hub (Server)** | **Tauri + Rust Backend / Node.js Engine** | Native desktop management window for the teacher; high-concurrency async I/O; low idle CPU/RAM usage; direct USB flash drive export. |
 | **Server Local DB** | **SQLite (via SQLx / better-sqlite3)** | Zero-config, single-file ACID storage embedded directly in the Hub. |
 | **Realtime Protocol** | **WebSockets (`ws` / Rust `tokio-tungstenite`)** | Low-latency state sync, quiz countdown coordination, and token streaming. |

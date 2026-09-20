@@ -47,7 +47,7 @@ flowchart TD
  DeskUI["React Tailwind M3 UI"]
  DeskSQLite[("Local SQLite DB")]
  DeskVideo["HTML5 Video Player"]
- DeskAI["Optional Local SLM"]
+ DeskAI["Local SLM (llama.cpp) or Hub Stream"]
  end
  end
 
@@ -97,16 +97,21 @@ sequenceDiagram
 
 ```mermaid
 flowchart TD
- Start["Student Launches AraLokal App"] --> HardwareCheck{"Check Device Specs<br/>(ActivityManager RAM)"}
+ Start["Student Launches App on Mobile or Laptop"] --> DeviceType{"Device Platform"}
  
- HardwareCheck -->|Physical RAM < 6GB| HubMode["Hub-Assisted Mode (WebSocket)<br/>• Zero phone RAM allocated<br/>• Lightweight token streaming<br/>• Low battery consumption"]
- 
- HardwareCheck -->|Physical RAM ≥ 6GB| CheckModel{"Check Local Storage:<br/>minicpm-2b-q4.gguf exists?"}
- 
- CheckModel -->|Yes| DeviceMode["100% On-Device Mode (llama.cpp JNI)<br/>• Local execution, zero network usage<br/>• Works completely offline at home"]
- CheckModel -->|No| OfferDownload["Prompt Model Download<br/>(1.55 GB over classroom Wi-Fi)"]
- OfferDownload -->|Download Completed| DeviceMode
- OfferDownload -->|Not Downloaded Yet| HubMode
+ DeviceType -->|"Student Laptop / Lab PC"| DeskCheck{"Check Local Storage:<br/>Model GGUF exists?"}
+ DeskCheck -->|Yes| DeskLocal["100% On-Device Mode (llama.cpp CPU/GPU)<br/>• Zero network usage<br/>• Works completely offline at home"]
+ DeskCheck -->|No| DeskPrompt["Prompt Download or Stream from Hub"]
+ DeskPrompt --> DeskLocal
+ DeskPrompt --> HubMode
+
+ DeviceType -->|"Android Mobile Phone"| HardwareCheck{"Check Physical RAM<br/>(ActivityManager)"}
+ HardwareCheck -->|"RAM < 6GB"| HubMode["Hub-Assisted Mode (WebSocket)<br/>• Zero phone RAM burden<br/>• Lightweight token streaming"]
+ HardwareCheck -->|"RAM >= 6GB"| MobCheck{"Model GGUF exists?"}
+ MobCheck -->|Yes| MobLocal["100% On-Device Mode (llama.cpp JNI)<br/>• Works offline anywhere"]
+ MobCheck -->|No| MobPrompt["Prompt Model Download (1.55 GB)"]
+ MobPrompt --> MobLocal
+ MobPrompt --> HubMode
 
  HubMode --> HubQueue["Local Hub Inference Slots"]
  HubQueue -->|"Slot Available (1-4)"| Infer["Execute MiniCPM on Hub Host"]
