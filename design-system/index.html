@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>L.A.R.A Material Design 3 System</title>
+  <title>L.A.R.A Material Design 3 UI System</title>
   <style>
     :root {
-      /* Material Design 3 Baseline Color Tokens (Light Scheme) */
+      /* M3 Light Color Tokens */
       --md-sys-color-primary: #005fb0;
       --md-sys-color-on-primary: #ffffff;
       --md-sys-color-primary-container: #d4e3ff;
@@ -44,7 +44,7 @@
       --md-sys-color-outline: #74777f;
       --md-sys-color-outline-variant: #c4c6cf;
 
-      /* Subject Category Tokens (Elementary Education) */
+      /* Subject Tokens */
       --md-subject-science: #146c2e;
       --md-subject-science-container: #c4eed0;
       --md-subject-math: #0b57d0;
@@ -64,19 +64,7 @@
       --md-state-queued: #00639b;
       --md-state-queued-container: #cce5ff;
 
-      /* Typography Scales */
-      --md-sys-typescale-display-large: 700 57px/64px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --md-sys-typescale-headline-large: 600 32px/40px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --md-sys-typescale-headline-medium: 600 28px/36px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --md-sys-typescale-title-large: 600 22px/28px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --md-sys-typescale-title-medium: 600 16px/24px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --md-sys-typescale-body-large: 400 16px/24px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --md-sys-typescale-body-medium: 400 14px/20px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --md-sys-typescale-label-large: 600 14px/20px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --md-sys-typescale-label-medium: 500 12px/16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-
       /* Shapes & Radii */
-      --md-sys-shape-corner-none: 0px;
       --md-sys-shape-corner-extra-small: 4px;
       --md-sys-shape-corner-small: 8px;
       --md-sys-shape-corner-medium: 12px;
@@ -90,7 +78,6 @@
       --md-sys-elevation-3: 0px 4px 8px 3px rgba(0,0,0,0.15), 0px 1px 3px 0px rgba(0,0,0,0.30);
     }
 
-    /* Dark Scheme Overrides */
     [data-theme="dark"] {
       --md-sys-color-primary: #a5c8ff;
       --md-sys-color-on-primary: #00315f;
@@ -152,7 +139,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      transition: background-color 0.15s ease, color 0.15s ease;
     }
 
     body {
@@ -163,12 +150,26 @@
       min-height: 100vh;
     }
 
+    .icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    .icon-lg {
+      width: 24px;
+      height: 24px;
+    }
+
     /* Sidebar Navigation */
     aside {
-      width: 280px;
+      width: 260px;
       background-color: var(--md-sys-color-surface-container-low);
       border-right: 1px solid var(--md-sys-color-outline-variant);
-      padding: 24px 16px;
+      padding: 24px 12px;
       position: sticky;
       top: 0;
       height: 100vh;
@@ -179,36 +180,36 @@
     aside .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       margin-bottom: 24px;
-      padding: 0 8px;
+      padding: 0 10px;
     }
 
     aside .brand-badge {
       background-color: var(--md-sys-color-primary);
       color: var(--md-sys-color-on-primary);
       font-weight: 700;
-      padding: 6px 12px;
+      padding: 4px 10px;
       border-radius: var(--md-sys-shape-corner-medium);
-      font-size: 14px;
+      font-size: 13px;
     }
 
     aside .brand-title {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
-      color: var(--md-sys-color-on-surface);
     }
 
     aside nav a {
       display: flex;
       align-items: center;
-      padding: 12px 16px;
+      gap: 12px;
+      padding: 10px 14px;
       color: var(--md-sys-color-on-surface-variant);
       text-decoration: none;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       border-radius: var(--md-sys-shape-corner-full);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     aside nav a:hover {
@@ -221,10 +222,10 @@
       color: var(--md-sys-color-on-primary-container);
     }
 
-    /* Main Content Area */
+    /* Main Area */
     main {
       flex: 1;
-      padding: 32px 48px 80px 48px;
+      padding: 28px 40px 60px 40px;
       max-width: 1200px;
     }
 
@@ -232,26 +233,37 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 32px;
-      padding-bottom: 20px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
       border-bottom: 1px solid var(--md-sys-color-outline-variant);
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .toolbar-actions {
       display: flex;
-      gap: 12px;
-      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
     .btn-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       background: var(--md-sys-color-surface-container);
       border: 1px solid var(--md-sys-color-outline-variant);
       color: var(--md-sys-color-on-surface);
-      padding: 8px 16px;
+      padding: 6px 14px;
       border-radius: var(--md-sys-shape-corner-full);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       cursor: pointer;
+    }
+
+    .btn-toggle.active-mode {
+      background-color: var(--md-sys-color-primary);
+      color: var(--md-sys-color-on-primary);
+      border-color: var(--md-sys-color-primary);
     }
 
     .btn-toggle:hover {
@@ -259,93 +271,83 @@
     }
 
     section {
-      margin-bottom: 56px;
-      scroll-margin-top: 40px;
+      margin-bottom: 44px;
+      scroll-margin-top: 30px;
     }
 
     h1 {
-      font-size: 36px;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--md-sys-color-on-surface);
+    }
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--md-sys-color-on-surface);
       margin-bottom: 8px;
     }
 
-    h2 {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--md-sys-color-on-surface);
-      margin-bottom: 16px;
-      border-bottom: 2px solid var(--md-sys-color-primary);
-      padding-bottom: 8px;
-      display: inline-block;
-    }
-
-    h3 {
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--md-sys-color-on-surface);
-      margin: 24px 0 12px 0;
-    }
-
-    p.section-desc {
+    p.subtext {
       color: var(--md-sys-color-on-surface-variant);
-      font-size: 15px;
-      line-height: 24px;
-      margin-bottom: 24px;
+      font-size: 13px;
+      margin-bottom: 18px;
     }
 
-    /* Grid Layouts */
+    .component-box {
+      background-color: var(--md-sys-color-surface-container-low);
+      border: 1px solid var(--md-sys-color-outline-variant);
+      border-radius: var(--md-sys-shape-corner-large);
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    /* Color Grid */
     .color-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
     }
 
     .color-card {
-      border-radius: var(--md-sys-shape-corner-medium);
-      padding: 16px;
-      min-height: 100px;
+      border-radius: var(--md-sys-shape-corner-small);
+      padding: 12px;
+      min-height: 72px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       border: 1px solid var(--md-sys-color-outline-variant);
     }
 
-    .color-name {
-      font-size: 13px;
+    .color-card .name {
+      font-size: 12px;
       font-weight: 700;
     }
 
-    .color-hex {
-      font-size: 12px;
-      opacity: 0.85;
+    .color-card .token {
+      font-size: 11px;
       font-family: monospace;
-    }
-
-    /* Component Showcase Cards */
-    .component-box {
-      background-color: var(--md-sys-color-surface-container-low);
-      border: 1px solid var(--md-sys-color-outline-variant);
-      border-radius: var(--md-sys-shape-corner-large);
-      padding: 24px;
-      margin-bottom: 24px;
+      opacity: 0.85;
     }
 
     /* Buttons */
     .button-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 12px;
       align-items: center;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      min-height: 48px; /* Elementary Accessibility Standard */
-      padding: 0 24px;
+      gap: 8px;
+      min-height: 48px;
+      padding: 0 20px;
       border-radius: var(--md-sys-shape-corner-full);
       font-size: 14px;
       font-weight: 600;
@@ -359,10 +361,6 @@
       color: var(--md-sys-color-on-primary);
     }
 
-    .btn-primary:hover {
-      opacity: 0.92;
-    }
-
     .btn-tonal {
       background-color: var(--md-sys-color-secondary-container);
       color: var(--md-sys-color-on-secondary-container);
@@ -374,38 +372,32 @@
       border: 1px solid var(--md-sys-color-outline);
     }
 
-    .btn-text {
-      background-color: transparent;
-      color: var(--md-sys-color-primary);
-      padding: 0 16px;
-    }
-
     .fab {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       min-height: 56px;
-      padding: 0 20px;
+      padding: 0 24px;
       background-color: var(--md-sys-color-primary-container);
       color: var(--md-sys-color-on-primary-container);
       border-radius: var(--md-sys-shape-corner-large);
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       border: none;
       box-shadow: var(--md-sys-elevation-2);
     }
 
     /* Cards */
-    .card-row {
+    .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      gap: 16px;
     }
 
     .md-card {
       background-color: var(--md-sys-color-surface-container);
       border-radius: var(--md-sys-shape-corner-medium);
-      padding: 20px;
+      padding: 16px;
       border: 1px solid transparent;
     }
 
@@ -418,31 +410,32 @@
       box-shadow: var(--md-sys-elevation-1);
     }
 
-    .card-tag {
-      display: inline-block;
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       font-size: 11px;
       font-weight: 700;
-      padding: 4px 8px;
+      padding: 3px 8px;
       border-radius: var(--md-sys-shape-corner-small);
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
-
-    .card-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--md-sys-color-on-surface);
       margin-bottom: 8px;
     }
 
-    .card-text {
-      font-size: 14px;
-      color: var(--md-sys-color-on-surface-variant);
-      line-height: 20px;
-      margin-bottom: 16px;
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--md-sys-color-on-surface);
+      margin-bottom: 6px;
     }
 
-    /* Badges & Pills */
+    .card-text {
+      font-size: 13px;
+      color: var(--md-sys-color-on-surface-variant);
+      line-height: 18px;
+      margin-bottom: 12px;
+    }
+
+    /* Status Badges */
     .badge {
       display: inline-flex;
       align-items: center;
@@ -473,60 +466,30 @@
       color: var(--md-state-queued);
     }
 
-    /* Inputs */
-    .input-group {
-      margin-bottom: 16px;
-      max-width: 400px;
-    }
-
-    .input-group label {
-      display: block;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--md-sys-color-on-surface-variant);
-      margin-bottom: 6px;
-    }
-
-    .input-field {
-      width: 100%;
-      min-height: 48px;
-      padding: 0 16px;
-      border-radius: var(--md-sys-shape-corner-extra-small);
-      border: 1px solid var(--md-sys-color-outline);
-      background-color: var(--md-sys-color-surface);
-      color: var(--md-sys-color-on-surface);
-      font-size: 15px;
-    }
-
-    .input-field:focus {
-      outline: 2px solid var(--md-sys-color-primary);
-      border-color: var(--md-sys-color-primary);
-    }
-
-    /* Interactive Quiz Timer Demo */
+    /* Quiz Timer */
     .quiz-timer-pill {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 16px;
+      gap: 6px;
+      padding: 6px 14px;
       border-radius: var(--md-sys-shape-corner-full);
       font-weight: 700;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .timer-safe {
-      background: #c4eed0;
-      color: #0d381e;
+      background: var(--md-state-online-container);
+      color: var(--md-state-online);
     }
 
     .timer-warning {
-      background: #ffe088;
-      color: #825500;
+      background: var(--md-state-pending-container);
+      color: var(--md-state-pending);
     }
 
     .timer-danger {
-      background: #ffdad6;
-      color: #ba1a1a;
+      background: var(--md-state-offline-container);
+      color: var(--md-state-offline);
       animation: pulse 1.5s infinite;
     }
 
@@ -536,70 +499,281 @@
       100% { opacity: 1; }
     }
 
-    /* Socratic Tutor Bottom Sheet Demo */
-    .tutor-sheet {
-      background-color: var(--md-sys-color-surface-container);
+    /* ----------------------------------------------------
+       MOBILE SIMULATOR STYLES
+       ---------------------------------------------------- */
+    .mobile-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px 0 40px 0;
+    }
+
+    .screen-switcher {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      background: var(--md-sys-color-surface-container);
+      padding: 4px;
+      border-radius: var(--md-sys-shape-corner-full);
       border: 1px solid var(--md-sys-color-outline-variant);
-      border-radius: var(--md-sys-shape-corner-extra-large) var(--md-sys-shape-corner-extra-large) 0 0;
-      padding: 24px;
-      max-width: 480px;
     }
 
-    .chat-bubble {
-      padding: 12px 16px;
-      border-radius: var(--md-sys-shape-corner-large);
-      font-size: 14px;
-      line-height: 20px;
-      margin-bottom: 12px;
-      max-width: 85%;
-    }
-
-    .chat-user {
-      background-color: var(--md-sys-color-primary);
-      color: var(--md-sys-color-on-primary);
-      margin-left: auto;
-      border-bottom-right-radius: 4px;
-    }
-
-    .chat-ai {
-      background-color: var(--md-sys-color-surface-container-high);
-      color: var(--md-sys-color-on-surface);
-      margin-right: auto;
-      border-bottom-left-radius: 4px;
-    }
-
-    .socratic-badge {
-      display: inline-block;
-      font-size: 10px;
+    .screen-tab {
+      padding: 8px 16px;
+      border-radius: var(--md-sys-shape-corner-full);
+      border: none;
+      background: transparent;
+      color: var(--md-sys-color-on-surface-variant);
+      font-size: 12px;
       font-weight: 700;
-      background: var(--md-sys-color-tertiary-container);
-      color: var(--md-sys-color-on-tertiary-container);
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin-bottom: 4px;
+      cursor: pointer;
     }
 
-    /* Typography Spec Table */
-    .spec-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 12px;
+    .screen-tab.active-tab {
+      background: var(--md-sys-color-primary);
+      color: var(--md-sys-color-on-primary);
     }
 
-    .spec-table th, .spec-table td {
-      text-align: left;
-      padding: 12px;
+    /* Phone Shell */
+    .phone-mockup {
+      width: 360px;
+      height: 720px;
+      background-color: var(--md-sys-color-surface);
+      border: 12px solid #1e1e1e;
+      border-radius: 40px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Phone Notch / Camera */
+    .phone-notch {
+      width: 100px;
+      height: 20px;
+      background: #1e1e1e;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      z-index: 100;
+    }
+
+    /* Android Status Bar */
+    .phone-status-bar {
+      height: 32px;
+      padding: 4px 16px 0 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--md-sys-color-on-surface-variant);
+      z-index: 90;
+      background-color: var(--md-sys-color-surface);
+    }
+
+    /* Android Top App Bar */
+    .phone-app-bar {
+      background-color: var(--md-sys-color-surface-container);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       border-bottom: 1px solid var(--md-sys-color-outline-variant);
     }
 
-    .spec-table th {
-      font-size: 12px;
+    .phone-app-bar .subject-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--md-sys-color-on-surface);
+    }
+
+    .phone-app-bar .class-code {
+      font-size: 11px;
       color: var(--md-sys-color-on-surface-variant);
-      text-transform: uppercase;
+    }
+
+    /* Phone Scrollable Screen Content */
+    .phone-body {
+      flex: 1;
+      padding: 14px;
+      overflow-y: auto;
+      background-color: var(--md-sys-color-background);
+      position: relative;
+    }
+
+    /* Floating Action Button inside Phone */
+    .phone-fab {
+      position: absolute;
+      bottom: 74px;
+      right: 14px;
+      background-color: var(--md-sys-color-primary-container);
+      color: var(--md-sys-color-on-primary-container);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      border-radius: var(--md-sys-shape-corner-large);
+      font-size: 12px;
+      font-weight: 700;
+      box-shadow: var(--md-sys-elevation-3);
+      cursor: pointer;
+      border: none;
+      z-index: 50;
+    }
+
+    /* M3 Bottom Navigation Bar */
+    .phone-bottom-nav {
+      height: 64px;
+      background-color: var(--md-sys-color-surface-container);
+      border-top: 1px solid var(--md-sys-color-outline-variant);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 4px;
+      z-index: 80;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      color: var(--md-sys-color-on-surface-variant);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      padding: 4px 12px;
+      border-radius: var(--md-sys-shape-corner-full);
+    }
+
+    .nav-item.active-nav {
+      color: var(--md-sys-color-primary);
+    }
+
+    .nav-item.active-nav .nav-indicator {
+      background-color: var(--md-sys-color-primary-container);
+      padding: 4px 16px;
+      border-radius: var(--md-sys-shape-corner-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   </style>
 </head>
 <body>
+
+  <!-- SVG Icon Sprite Definitions -->
+    <!-- Official Google Material Symbols (SVG Sprite) -->
+  <svg style="display: none;">
+    <defs>
+      <!-- Palette (Colors) -->
+      <symbol id="icon-palette" viewBox="0 0 24 24">
+        <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10c1.38 0 2.5-1.12 2.5-2.5 0-.61-.23-1.2-.64-1.67-.08-.1-.13-.21-.13-.33 0-.28.22-.5.5-.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9zm-5.5 11c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-4c-.83 0-1.5-.67-1.5-1.5S8.67 6 9.5 6s1.5.67 1.5 1.5S10.33 9 9.5 9zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 6 14.5 6s1.5.67 1.5 1.5S15.33 9 14.5 9zm3 4c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+      </symbol>
+
+      <!-- School / Graduation Cap (Subjects) -->
+      <symbol id="icon-school" viewBox="0 0 24 24">
+        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+      </symbol>
+
+      <!-- Format Size / Typography -->
+      <symbol id="icon-text" viewBox="0 0 24 24">
+        <path d="M9 4v3h5v12h3V7h5V4H9zm-6 8h3v7h3v-7h3V9H3v3z"/>
+      </symbol>
+
+      <!-- Touch App / Buttons -->
+      <symbol id="icon-touch" viewBox="0 0 24 24">
+        <path d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.02-.24-.02-.31 0-.6.13-.8.34l-.8.81 4.78 4.79c.27.26.63.41 1.01.41h7.73c.72 0 1.34-.52 1.46-1.23l.79-4.63c.12-.7-.25-1.39-.89-1.66z"/>
+      </symbol>
+
+      <!-- Campaign (Announcements) -->
+      <symbol id="icon-campaign" viewBox="0 0 24 24">
+        <path d="M18 11c0-.67 0-1.33-.02-2H20v4h-2.02c.02-.67.02-1.33.02-2zM4 9v6h4l5 5V4L8 9H4zm11.5 2c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM19 6.54v1.55c2.04 1.35 3 3.6 3 5.91s-.96 4.56-3 5.91v1.55c2.81-1.5 4.5-4.52 4.5-7.46s-1.69-5.96-4.5-7.46z"/>
+      </symbol>
+
+      <!-- Assignment / Quiz -->
+      <symbol id="icon-quiz" viewBox="0 0 24 24">
+        <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+      </symbol>
+
+      <!-- Auto Awesome (Socratic AI) -->
+      <symbol id="icon-ai" viewBox="0 0 24 24">
+        <path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/>
+      </symbol>
+
+      <!-- Wifi Online -->
+      <symbol id="icon-wifi" viewBox="0 0 24 24">
+        <path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98A16.88 16.88 0 0 0 12 4zm0 2.9c3.78 0 7.23 1.44 9.87 3.82L12 18.63 2.13 10.72A14.07 14.07 0 0 1 12 6.9z"/>
+      </symbol>
+
+      <!-- Wifi Offline -->
+      <symbol id="icon-wifi-off" viewBox="0 0 24 24">
+        <path d="M22.99 9C21.7 7.7 20.17 6.64 18.49 5.86l1.79-1.79-1.41-1.41L1.39 20.15l1.41 1.41 3.52-3.52L12 22l4.88-5.38 4.29-4.29c.64-.64 1.25-1.35 1.82-2.33zm-4.5 4.5l-1.42 1.42L12 19.33l-3.35-3.69 8.84-8.84c1.17.65 2.22 1.47 3.12 2.45l-4.12 4.25z"/>
+      </symbol>
+
+      <!-- Lock -->
+      <symbol id="icon-lock" viewBox="0 0 24 24">
+        <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+      </symbol>
+
+      <!-- Play -->
+      <symbol id="icon-play" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z"/>
+      </symbol>
+
+      <!-- Download -->
+      <symbol id="icon-download" viewBox="0 0 24 24">
+        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+      </symbol>
+
+      <!-- Timer -->
+      <symbol id="icon-timer" viewBox="0 0 24 24">
+        <path d="M15 1H9v2h6V1zm-4 13h2V8h-2v6zm8.03-6.61l1.42-1.42c-.43-.51-.9-.99-1.41-1.41l-1.42 1.42C16.07 4.74 14.12 4 12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9 9-4.03 9-9c0-2.12-.74-4.07-1.97-5.61zM12 20c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+      </symbol>
+
+      <!-- Check -->
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+      </symbol>
+
+      <!-- Schedule -->
+      <symbol id="icon-schedule" viewBox="0 0 24 24">
+        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+      </symbol>
+
+      <!-- Sync -->
+      <symbol id="icon-sync" viewBox="0 0 24 24">
+        <path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>
+      </symbol>
+
+      <!-- Translate -->
+      <symbol id="icon-translate" viewBox="0 0 24 24">
+        <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
+      </symbol>
+
+      <!-- Dark Mode -->
+      <symbol id="icon-dark" viewBox="0 0 24 24">
+        <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+      </symbol>
+
+      <!-- Smartphone / Mobile -->
+      <symbol id="icon-mobile" viewBox="0 0 24 24">
+        <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
+      </symbol>
+
+      <!-- Camera -->
+      <symbol id="icon-camera" viewBox="0 0 24 24">
+        <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+      </symbol>
+    </defs>
+  </svg>
 
   <!-- Sidebar -->
   <aside>
@@ -608,16 +782,13 @@
       <span class="brand-title">Design System</span>
     </div>
     <nav>
-      <a href="#principles" class="active">Principles & Target</a>
-      <a href="#colors">Color System (M3)</a>
-      <a href="#subjects">Subject Palettes</a>
-      <a href="#typography">Typography Scale</a>
-      <a href="#buttons">Buttons & Actions</a>
-      <a href="#cards">Classroom Cards</a>
-      <a href="#inputs">Form Fields & PIN</a>
-      <a href="#quiz">Paperless Quiz UI</a>
-      <a href="#tutor">Socratic AI Sheet</a>
-      <a href="#network">Network State Badges</a>
+      <a href="#simulator" class="active"><svg class="icon"><use href="#icon-mobile"/></svg> <span data-i18n="nav_simulator">Live Mobile View</span></a>
+      <a href="#colors"><svg class="icon"><use href="#icon-palette"/></svg> <span data-i18n="nav_colors">Color Roles</span></a>
+      <a href="#subjects"><svg class="icon"><use href="#icon-school"/></svg> <span data-i18n="nav_subjects">Subject Tints</span></a>
+      <a href="#buttons"><svg class="icon"><use href="#icon-touch"/></svg> <span data-i18n="nav_buttons">Buttons & FAB</span></a>
+      <a href="#cards"><svg class="icon"><use href="#icon-campaign"/></svg> <span data-i18n="nav_cards">Cards</span></a>
+      <a href="#quiz"><svg class="icon"><use href="#icon-quiz"/></svg> <span data-i18n="nav_quiz">Paperless Quiz</span></a>
+      <a href="#tutor"><svg class="icon"><use href="#icon-ai"/></svg> <span data-i18n="nav_tutor">Socratic AI</span></a>
     </nav>
   </aside>
 
@@ -625,413 +796,329 @@
   <main>
     <header class="top-bar">
       <div>
-        <h1 data-i18n="doc_title">Material Design 3 System</h1>
-        <p style="color: var(--md-sys-color-on-surface-variant); font-size: 14px;" data-i18n="doc_subtitle">
-          Design standards and UI components for L.A.R.A (DepEd Elementary Grades 1 to 6)
-        </p>
+        <h1 data-i18n="doc_title">Material Design 3</h1>
+        <p class="subtext" data-i18n="doc_subtitle" style="margin-bottom: 0;">L.A.R.A UI specifications & interactive mobile preview</p>
       </div>
       <div class="toolbar-actions">
-        <button class="btn-toggle" id="lang-btn" onclick="toggleLanguage()">Language: English</button>
-        <button class="btn-toggle" id="theme-btn" onclick="toggleTheme()">Theme: Light</button>
+        <button class="btn-toggle" onclick="toggleLanguage()">
+          <svg class="icon"><use href="#icon-translate"/></svg>
+          <span id="lang-label">English</span>
+        </button>
+        <button class="btn-toggle" onclick="toggleTheme()">
+          <svg class="icon"><use href="#icon-dark"/></svg>
+          <span id="theme-label">Light Mode</span>
+        </button>
       </div>
     </header>
 
-    <!-- 1. Principles -->
-    <section id="principles">
-      <h2 data-i18n="sec_principles">Elementary Design Principles</h2>
-      <p class="section-desc" data-i18n="desc_principles">
-        L.A.R.A is built for Filipino elementary pupils (Grades 1 to 6) on entry-level Android devices and school laptops. The UI enforces large tap targets, high-contrast text, clear iconography, and distraction-free layouts.
-      </p>
+    <!-- LIVE MOBILE VIEW SIMULATOR -->
+    <section id="simulator">
+      <h2><svg class="icon-lg"><use href="#icon-mobile"/></svg> <span data-i18n="sec_simulator">Interactive Mobile Screen Preview</span></h2>
+      <p class="subtext" data-i18n="desc_simulator">Simulating how the L.A.R.A Android client renders on an elementary student's phone (360x720dp).</p>
 
-      <div class="component-box">
-        <ul style="padding-left: 20px; line-height: 28px; font-size: 15px;">
-          <li><strong>Touch Targets:</strong> Minimum 48dp on all clickable elements (preferred 56dp for primary actions) to prevent miss-taps by young children.</li>
-          <li><strong>High Contrast & Clean Typography:</strong> Minimum 4.5:1 text-to-background contrast ratio for public school classroom lighting.</li>
-          <li><strong>Bilingual Localization:</strong> Complete interface parity between English and Filipino.</li>
-          <li><strong>No Hidden Menus:</strong> Essential classroom tasks (Stream, Classwork, Quizzes) are reachable in one tap via the bottom navigation bar.</li>
-        </ul>
+      <div class="mobile-stage">
+        <!-- Screen Selector -->
+        <div class="screen-switcher">
+          <button class="screen-tab active-tab" onclick="switchPhoneScreen('stream')">1. Stream (Aralin)</button>
+          <button class="screen-tab" onclick="switchPhoneScreen('quiz')">2. Timed Quiz (Pagsusulit)</button>
+          <button class="screen-tab" onclick="switchPhoneScreen('tutor')">3. Socratic AI Drawer</button>
+        </div>
+
+        <!-- Android Shell -->
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          
+          <!-- Status Bar -->
+          <div class="phone-status-bar">
+            <span>08:30</span>
+            <div style="display: flex; gap: 6px; align-items: center;">
+              <svg class="icon" style="width: 14px; height: 14px;"><use href="#icon-wifi"/></svg>
+              <span>95%</span>
+            </div>
+          </div>
+
+          <!-- Top App Bar -->
+          <div class="phone-app-bar">
+            <div>
+              <div class="subject-title">Grade 4 - Science</div>
+              <div class="class-code">Code: SCI4-AG • Section Aguinaldo</div>
+            </div>
+            <span class="badge badge-online" style="font-size: 10px; padding: 2px 8px;">
+              <svg class="icon" style="width: 12px; height: 12px;"><use href="#icon-wifi"/></svg> Hub OK
+            </span>
+          </div>
+
+          <!-- Screen 1: Stream Body -->
+          <div class="phone-body" id="screen-stream">
+            <!-- Announcement -->
+            <div class="md-card elevated" style="margin-bottom: 12px; padding: 12px;">
+              <span class="card-badge" style="background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container);">
+                <svg class="icon" style="width: 14px; height: 14px;"><use href="#icon-campaign"/></svg> Anunsyo
+              </span>
+              <div class="card-title" style="font-size: 14px;">Magdala ng Dahon Bukas</div>
+              <div class="card-text" style="font-size: 12px; margin-bottom: 8px;">
+                Mangyaring magpulot ng 3 dahon mula sa inyong bakuran para sa aralin sa Photosynthesis.
+              </div>
+              <div style="font-size: 10px; color: var(--md-sys-color-outline);">Teacher Maria • 08:30 AM</div>
+            </div>
+
+            <!-- Video Lesson Card -->
+            <div class="md-card outlined" style="margin-bottom: 12px; padding: 12px;">
+              <span class="card-badge" style="background: var(--md-subject-science-container); color: var(--md-subject-science);">
+                <svg class="icon" style="width: 14px; height: 14px;"><use href="#icon-play"/></svg> Bidyo (6m 30s)
+              </span>
+              <div class="card-title" style="font-size: 14px;">Paano Umiinom ng Tubig ang Halaman</div>
+              <div class="card-text" style="font-size: 12px; margin-bottom: 10px;">
+                Panoorin ang proseso ng xylem at ugat.
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <button class="btn btn-tonal" style="min-height: 38px; font-size: 12px; padding: 0 12px; flex: 1;">
+                  <svg class="icon" style="width: 16px; height: 16px;"><use href="#icon-play"/></svg> Panoorin
+                </button>
+                <button class="btn btn-outlined" style="min-height: 38px; font-size: 12px; padding: 0 12px; flex: 1;">
+                  <svg class="icon" style="width: 16px; height: 16px;"><use href="#icon-download"/></svg> I-save
+                </button>
+              </div>
+            </div>
+
+            <!-- Homework Card with Camera -->
+            <div class="md-card outlined" style="margin-bottom: 12px; padding: 12px;">
+              <span class="card-badge" style="background: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container);">
+                <svg class="icon" style="width: 14px; height: 14px;"><use href="#icon-camera"/></svg> Takdang Aralin
+              </span>
+              <div class="card-title" style="font-size: 14px;">Gawain 2: Iguhit ang Bahagi ng Halaman</div>
+              <div class="card-text" style="font-size: 12px; margin-bottom: 10px;">
+                Kunan ng litrato ang inyong drowing sa kuwaderno.
+              </div>
+              <button class="btn btn-primary" style="min-height: 38px; font-size: 12px; width: 100%;">
+                <svg class="icon" style="width: 16px; height: 16px;"><use href="#icon-camera"/></svg> Kunan ng Litrato
+              </button>
+            </div>
+          </div>
+
+          <!-- Screen 2: Quiz Body -->
+          <div class="phone-body" id="screen-quiz" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span class="quiz-timer-pill timer-safe" style="font-size: 12px; padding: 4px 10px;">
+                <svg class="icon" style="width: 14px; height: 14px;"><use href="#icon-timer"/></svg> 18:45 Natitira
+              </span>
+              <span class="badge badge-offline" style="font-size: 10px; padding: 2px 6px;">
+                <svg class="icon" style="width: 12px; height: 12px;"><use href="#icon-lock"/></svg> AI Lock
+              </span>
+            </div>
+
+            <div class="md-card outlined" style="padding: 12px;">
+              <div style="font-size: 11px; font-weight: 700; color: var(--md-sys-color-outline); margin-bottom: 6px;">Tanong 3 ng 15</div>
+              <p style="font-size: 13px; font-weight: 700; margin-bottom: 12px;">
+                Anong berdeng kemikal ang sumasipsip ng sikat ng araw sa mga dahon?
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <label style="display: flex; align-items: center; gap: 10px; padding: 10px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px; font-size: 12px; cursor: pointer;">
+                  <input type="radio" name="phone-q3" checked> A) Chlorophyll
+                </label>
+                <label style="display: flex; align-items: center; gap: 10px; padding: 10px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px; font-size: 12px; cursor: pointer;">
+                  <input type="radio" name="phone-q3"> B) Oxygen
+                </label>
+                <label style="display: flex; align-items: center; gap: 10px; padding: 10px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px; font-size: 12px; cursor: pointer;">
+                  <input type="radio" name="phone-q3"> C) Nitrogen
+                </label>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" style="width: 100%; min-height: 44px; margin-top: 14px; font-size: 13px;">
+              Susunod na Tanong
+            </button>
+          </div>
+
+          <!-- Screen 3: Socratic AI Tutor Sheet -->
+          <div class="phone-body" id="screen-tutor" style="display: none; padding: 0;">
+            <div style="padding: 12px; opacity: 0.35;">
+              <div class="card-title" style="font-size: 13px;">Aralin 3: Photosynthesis</div>
+              <p style="font-size: 11px;">Ang photosynthesis ay ang paraan kung paano gumagawa ng pagkain ang mga halaman gamit ang araw, tubig, at hangin...</p>
+            </div>
+
+            <div class="tutor-sheet" style="position: absolute; bottom: 0; left: 0; right: 0; max-width: 100%; border-radius: 20px 20px 0 0; box-shadow: var(--md-sys-elevation-3);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <svg class="icon" style="color: var(--md-sys-color-primary); width: 18px; height: 18px;"><use href="#icon-ai"/></svg>
+                  <strong style="font-size: 13px;">L.A.R.A AI</strong>
+                </div>
+                <span class="badge badge-online" style="font-size: 10px; padding: 2px 6px;">Aralin 3</span>
+              </div>
+
+              <div class="chat-bubble chat-user" style="font-size: 12px;">Ano ang sagot sa tanong 2?</div>
+              <div class="chat-bubble chat-ai" style="font-size: 12px;">
+                Hindi ko maibibigay ang mismong sagot, pero tutulungan kita! Tingnan ang talata 2. Anong hangin ang hinihigop ng halaman?
+              </div>
+              <div class="chat-bubble chat-user" style="font-size: 12px;">Carbon dioxide po?</div>
+              <div class="chat-bubble chat-ai" style="font-size: 12px;">Tumpak! Ngayon, ano naman ang inilalabas nila para malanghap natin?</div>
+            </div>
+          </div>
+
+          <!-- Floating Button on Screen 1 -->
+          <button class="phone-fab" id="phone-fab-btn" onclick="switchPhoneScreen('tutor')">
+            <svg class="icon"><use href="#icon-ai"/></svg> Magtanong
+          </button>
+
+          <!-- Bottom Navigation Bar -->
+          <div class="phone-bottom-nav">
+            <div class="nav-item active-nav" onclick="switchPhoneScreen('stream')">
+              <div class="nav-indicator">
+                <svg class="icon" style="width: 18px; height: 18px;"><use href="#icon-campaign"/></svg>
+              </div>
+              <span>Stream</span>
+            </div>
+            <div class="nav-item" onclick="switchPhoneScreen('quiz')">
+              <svg class="icon" style="width: 18px; height: 18px;"><use href="#icon-quiz"/></svg>
+              <span>Gawain</span>
+            </div>
+            <div class="nav-item" onclick="switchPhoneScreen('stream')">
+              <svg class="icon" style="width: 18px; height: 18px;"><use href="#icon-school"/></svg>
+              <span>Grado</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- 2. Colors -->
+    <!-- Colors Reference -->
     <section id="colors">
-      <h2 data-i18n="sec_colors">Material 3 Color Roles</h2>
-      <p class="section-desc" data-i18n="desc_colors">
-        Tonal palettes generated from Material 3 baseline tokens, supporting dynamic daylight and dark mode adaptation.
-      </p>
+      <h2><svg class="icon-lg"><use href="#icon-palette"/></svg> <span data-i18n="sec_colors">Color Roles</span></h2>
+      <p class="subtext" data-i18n="desc_colors">Material 3 baseline color tokens supporting light and dark classroom modes.</p>
 
-      <h3>Primary & Secondary Roles</h3>
       <div class="color-grid">
         <div class="color-card" style="background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary);">
-          <span class="color-name">Primary</span>
-          <span class="color-hex">--md-sys-color-primary</span>
+          <span class="name">Primary</span>
+          <span class="token">--primary</span>
         </div>
         <div class="color-card" style="background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container);">
-          <span class="color-name">Primary Container</span>
-          <span class="color-hex">--md-sys-color-primary-container</span>
-        </div>
-        <div class="color-card" style="background: var(--md-sys-color-secondary); color: var(--md-sys-color-on-secondary);">
-          <span class="color-name">Secondary</span>
-          <span class="color-hex">--md-sys-color-secondary</span>
+          <span class="name">Primary Container</span>
+          <span class="token">--primary-container</span>
         </div>
         <div class="color-card" style="background: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container);">
-          <span class="color-name">Secondary Container</span>
-          <span class="color-hex">--md-sys-color-secondary-container</span>
-        </div>
-      </div>
-
-      <h3>Surface Containers (Hierarchy & Elevation)</h3>
-      <div class="color-grid">
-        <div class="color-card" style="background: var(--md-sys-color-surface-container-lowest); color: var(--md-sys-color-on-surface);">
-          <span class="color-name">Surface Lowest</span>
-          <span class="color-hex">--md-sys-color-surface-container-lowest</span>
+          <span class="name">Secondary Container</span>
+          <span class="token">--secondary-container</span>
         </div>
         <div class="color-card" style="background: var(--md-sys-color-surface-container); color: var(--md-sys-color-on-surface);">
-          <span class="color-name">Surface Container</span>
-          <span class="color-hex">--md-sys-color-surface-container</span>
-        </div>
-        <div class="color-card" style="background: var(--md-sys-color-surface-container-highest); color: var(--md-sys-color-on-surface);">
-          <span class="color-name">Surface Highest</span>
-          <span class="color-hex">--md-sys-color-surface-container-highest</span>
+          <span class="name">Surface Container</span>
+          <span class="token">--surface-container</span>
         </div>
         <div class="color-card" style="background: var(--md-sys-color-error-container); color: var(--md-sys-color-on-error-container);">
-          <span class="color-name">Error Container</span>
-          <span class="color-hex">--md-sys-color-error-container</span>
+          <span class="name">Error Container</span>
+          <span class="token">--error-container</span>
         </div>
       </div>
     </section>
 
-    <!-- 3. Subject Colors -->
+    <!-- Subjects Reference -->
     <section id="subjects">
-      <h2 data-i18n="sec_subjects">Elementary Subject Coding</h2>
-      <p class="section-desc" data-i18n="desc_subjects">
-        Color cues used on course cards, assignment headers, and module badges to help young pupils quickly recognize subjects.
-      </p>
+      <h2><svg class="icon-lg"><use href="#icon-school"/></svg> <span data-i18n="sec_subjects">Subject Tints</span></h2>
+      <p class="subtext" data-i18n="desc_subjects">Consistent color coding for elementary subjects.</p>
 
       <div class="color-grid">
         <div class="color-card" style="background: var(--md-subject-science-container); color: var(--md-subject-science);">
-          <span class="color-name">Science (Agham)</span>
-          <span class="color-hex">Green Accent</span>
+          <span class="name">Science (Agham)</span>
+          <span class="token">Green Accent</span>
         </div>
         <div class="color-card" style="background: var(--md-subject-math-container); color: var(--md-subject-math);">
-          <span class="color-name">Mathematics (Matematika)</span>
-          <span class="color-hex">Blue Accent</span>
+          <span class="name">Mathematics (Matematika)</span>
+          <span class="token">Blue Accent</span>
         </div>
         <div class="color-card" style="background: var(--md-subject-english-container); color: var(--md-subject-english);">
-          <span class="color-name">English</span>
-          <span class="color-hex">Amber Accent</span>
+          <span class="name">English</span>
+          <span class="token">Amber Accent</span>
         </div>
         <div class="color-card" style="background: var(--md-subject-filipino-container); color: var(--md-subject-filipino);">
-          <span class="color-name">Filipino & Araling Panlipunan</span>
-          <span class="color-hex">Rose Accent</span>
+          <span class="name">Filipino</span>
+          <span class="token">Rose Accent</span>
         </div>
       </div>
     </section>
 
-    <!-- 4. Typography Scale -->
-    <section id="typography">
-      <h2 data-i18n="sec_typography">Typography Scale</h2>
-      <p class="section-desc" data-i18n="desc_typography">
-        Large, clean type scale matching Material 3 specifications, optimized for children learning to read.
-      </p>
-
-      <div class="component-box">
-        <table class="spec-table">
-          <thead>
-            <tr>
-              <th>Role</th>
-              <th>Example Text</th>
-              <th>Size / Line Height</th>
-              <th>Weight</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Headline Large</td>
-              <td style="font-size: 32px; font-weight: 600;">Grade 4 - Science</td>
-              <td>32px / 40px</td>
-              <td>Semi-Bold (600)</td>
-            </tr>
-            <tr>
-              <td>Title Large</td>
-              <td style="font-size: 22px; font-weight: 600;">Lesson 3: Photosynthesis</td>
-              <td>22px / 28px</td>
-              <td>Semi-Bold (600)</td>
-            </tr>
-            <tr>
-              <td>Title Medium</td>
-              <td style="font-size: 16px; font-weight: 600;">Multiple Choice (Item 1 of 15)</td>
-              <td>16px / 24px</td>
-              <td>Semi-Bold (600)</td>
-            </tr>
-            <tr>
-              <td>Body Large</td>
-              <td style="font-size: 16px; line-height: 24px;">Plants use sunlight and water to produce food.</td>
-              <td>16px / 24px</td>
-              <td>Regular (400)</td>
-            </tr>
-            <tr>
-              <td>Label Large</td>
-              <td style="font-size: 14px; font-weight: 600;">SUBMIT ANSWERS</td>
-              <td>14px / 20px</td>
-              <td>Semi-Bold (600)</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- 5. Buttons & Actions -->
+    <!-- Buttons Reference -->
     <section id="buttons">
-      <h2 data-i18n="sec_buttons">Buttons & Touch Targets</h2>
-      <p class="section-desc" data-i18n="desc_buttons">
-        Buttons adhere to the 48dp / 56dp minimum height for child-friendly touch accessibility.
-      </p>
+      <h2><svg class="icon-lg"><use href="#icon-touch"/></svg> <span data-i18n="sec_buttons">Buttons & Actions</span></h2>
+      <p class="subtext" data-i18n="desc_buttons">Touch targets enforce a minimum 48dp height (56dp for FABs).</p>
 
       <div class="component-box">
         <div class="button-row">
-          <button class="btn btn-primary" data-i18n="btn_primary">Filled Primary</button>
-          <button class="btn btn-tonal" data-i18n="btn_tonal">Filled Tonal</button>
-          <button class="btn btn-outlined" data-i18n="btn_outlined">Outlined</button>
-          <button class="btn btn-text" data-i18n="btn_text">Text Button</button>
-          <button class="fab" data-i18n="btn_fab">Ask L.A.R.A AI</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. Classroom Cards -->
-    <section id="cards">
-      <h2 data-i18n="sec_cards">Classroom Cards</h2>
-      <p class="section-desc" data-i18n="desc_cards">
-        Container cards for stream announcements, lesson modules, video clips, and paperless quizzes.
-      </p>
-
-      <div class="card-row">
-        <!-- Announcement Card -->
-        <div class="md-card elevated">
-          <span class="card-tag" style="background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container);">
-            Announcement
-          </span>
-          <div class="card-title">Bring your leaves tomorrow</div>
-          <div class="card-text">
-            Good morning Class! For our science activity tomorrow, please collect 3 fallen leaves from your garden.
-          </div>
-          <div style="font-size: 12px; color: var(--md-sys-color-outline);">Posted by Teacher Maria - 8:30 AM</div>
-        </div>
-
-        <!-- Video Card -->
-        <div class="md-card outlined">
-          <span class="card-tag" style="background: var(--md-subject-science-container); color: var(--md-subject-science);">
-            Video Lesson (720p)
-          </span>
-          <div class="card-title">How Plants Drink Water</div>
-          <div class="card-text">
-            Duration: 6 mins 30 secs. Supports instant scrub and save for home study.
-          </div>
-          <div class="button-row">
-            <button class="btn btn-tonal" style="min-height: 40px; font-size: 13px;">Play Video</button>
-            <button class="btn btn-outlined" style="min-height: 40px; font-size: 13px;">Save for Home</button>
-          </div>
-        </div>
-
-        <!-- Quiz Card -->
-        <div class="md-card outlined">
-          <span class="card-tag" style="background: var(--md-state-pending-container); color: var(--md-state-pending);">
-            Paperless Quiz - 20 Mins
-          </span>
-          <div class="card-title">Weekly Quiz: Plant Biology</div>
-          <div class="card-text">
-            15 Items: Multiple Choice and True/False. Instant score upon completion.
-          </div>
-          <button class="btn btn-primary" style="width: 100%;">Start Quiz Now</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. Inputs & PIN -->
-    <section id="inputs">
-      <h2 data-i18n="sec_inputs">Form Fields & PIN Input</h2>
-      <p class="section-desc" data-i18n="desc_inputs">
-        Clean inputs for self-registration, Class Code entry, and 4-digit PIN authentication.
-      </p>
-
-      <div class="component-box">
-        <div class="input-group">
-          <label>Full Name</label>
-          <input type="text" class="input-field" value="Juan Dela Cruz">
-        </div>
-        <div class="input-group">
-          <label>Learner Reference Number (LRN)</label>
-          <input type="text" class="input-field" value="123456789012">
-        </div>
-        <div class="input-group">
-          <label>Class Code (6 Characters)</label>
-          <input type="text" class="input-field" value="SCI4-AG" style="font-weight: 700; letter-spacing: 2px;">
-        </div>
-      </div>
-    </section>
-
-    <!-- 8. Paperless Quiz UI -->
-    <section id="quiz">
-      <h2 data-i18n="sec_quiz">Paperless Quiz System</h2>
-      <p class="section-desc" data-i18n="desc_quiz">
-        Interactive countdown timer and anti-cheat indicators. The Socratic AI tutor is strictly locked during quizzes.
-      </p>
-
-      <div class="component-box">
-        <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 24px;">
-          <span class="quiz-timer-pill timer-safe" id="demo-timer">Time Remaining: 18:45</span>
-          <button class="btn-toggle" onclick="setTimerDemo('safe')">Safe (>5 mins)</button>
-          <button class="btn-toggle" onclick="setTimerDemo('warning')">Warning (&lt;5 mins)</button>
-          <button class="btn-toggle" onclick="setTimerDemo('danger')">Danger (&lt;2 mins)</button>
-        </div>
-
-        <div class="md-card outlined" style="max-width: 600px;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
-            <span style="font-weight: 700; font-size: 14px;">Question 3 of 15</span>
-            <span class="badge badge-offline">AI Tutor Locked Out</span>
-          </div>
-          <p style="font-size: 16px; font-weight: 600; margin-bottom: 16px;">
-            What green pigment allows plants to absorb sunlight during photosynthesis?
-          </p>
-          <div style="display: flex; flex-direction: column; gap: 10px;">
-            <label style="display: flex; align-items: center; gap: 12px; padding: 14px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px; cursor: pointer;">
-              <input type="radio" name="q3"> A) Chlorophyll
-            </label>
-            <label style="display: flex; align-items: center; gap: 12px; padding: 14px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px; cursor: pointer;">
-              <input type="radio" name="q3"> B) Oxygen
-            </label>
-            <label style="display: flex; align-items: center; gap: 12px; padding: 14px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px; cursor: pointer;">
-              <input type="radio" name="q3"> C) Nitrogen
-            </label>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. Socratic AI Sheet -->
-    <section id="tutor">
-      <h2 data-i18n="sec_tutor">Socratic AI Tutor Sheet</h2>
-      <p class="section-desc" data-i18n="desc_tutor">
-        Demonstrating the pedagogical conversation model: L.A.R.A AI provides guidance without giving the direct answer.
-      </p>
-
-      <div class="component-box">
-        <div class="tutor-sheet">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-            <div>
-              <span class="socratic-badge">Socratic Guide</span>
-              <div style="font-weight: 700; font-size: 16px;">L.A.R.A AI</div>
-            </div>
-            <span class="badge badge-online">Grounded: Lesson 3</span>
-          </div>
-
-          <div class="chat-bubble chat-user">
-            Teacher, what is the answer to question 2?
-          </div>
-
-          <div class="chat-bubble chat-ai">
-            I cannot give you the answer directly, but let us discover it together! Take a look at paragraph 2 of your module. What gas do plants take in from the air?
-          </div>
-
-          <div class="chat-bubble chat-user">
-            Carbon dioxide?
-          </div>
-
-          <div class="chat-bubble chat-ai">
-            Exactly right! Now, combined with water from the roots, what do they produce next?
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 10. Network Badges -->
-    <section id="network">
-      <h2 data-i18n="sec_network">Network & Sync Status Badges</h2>
-      <p class="section-desc" data-i18n="desc_network">
-        Indicators communicating real-time connection status across the offline classroom.
-      </p>
-
-      <div class="component-box">
-        <div class="button-row">
-          <span class="badge badge-online">Connected to Local Hub (192.168.1.50)</span>
-          <span class="badge badge-offline">Offline Mode (Home Study)</span>
-          <span class="badge badge-pending">Pending Teacher Approval</span>
-          <span class="badge badge-queued">Quiz Queued for Sync (1 attempt)</span>
+          <button class="btn btn-primary">
+            <svg class="icon"><use href="#icon-check"/></svg>
+            <span data-i18n="btn_primary">Submit Work</span>
+          </button>
+          <button class="btn btn-tonal">
+            <svg class="icon"><use href="#icon-play"/></svg>
+            <span data-i18n="btn_tonal">Play Lesson</span>
+          </button>
+          <button class="btn btn-outlined">
+            <svg class="icon"><use href="#icon-download"/></svg>
+            <span data-i18n="btn_outlined">Save for Home</span>
+          </button>
+          <button class="fab">
+            <svg class="icon"><use href="#icon-ai"/></svg>
+            <span data-i18n="btn_fab">Ask L.A.R.A AI</span>
+          </button>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Interactive Scripts -->
   <script>
     let currentLang = 'en';
     let currentTheme = 'light';
 
     const translations = {
       en: {
-        doc_title: "Material Design 3 System",
-        doc_subtitle: "Design standards and UI components for L.A.R.A (DepEd Elementary Grades 1 to 6)",
-        sec_principles: "Elementary Design Principles",
-        desc_principles: "L.A.R.A is built for Filipino elementary pupils (Grades 1 to 6) on entry-level Android devices and school laptops. The UI enforces large tap targets, high-contrast text, clear iconography, and distraction-free layouts.",
-        sec_colors: "Material 3 Color Roles",
-        desc_colors: "Tonal palettes generated from Material 3 baseline tokens, supporting dynamic daylight and dark mode adaptation.",
-        sec_subjects: "Elementary Subject Coding",
-        desc_subjects: "Color cues used on course cards, assignment headers, and module badges to help young pupils quickly recognize subjects.",
-        sec_typography: "Typography Scale",
-        desc_typography: "Large, clean type scale matching Material 3 specifications, optimized for children learning to read.",
-        sec_buttons: "Buttons & Touch Targets",
-        desc_buttons: "Buttons adhere to the 48dp / 56dp minimum height for child-friendly touch accessibility.",
-        btn_primary: "Filled Primary",
-        btn_tonal: "Filled Tonal",
-        btn_outlined: "Outlined",
-        btn_text: "Text Button",
-        btn_fab: "Ask L.A.R.A AI",
-        sec_cards: "Classroom Cards",
-        desc_cards: "Container cards for stream announcements, lesson modules, video clips, and paperless quizzes.",
-        sec_inputs: "Form Fields & PIN Input",
-        desc_inputs: "Clean inputs for self-registration, Class Code entry, and 4-digit PIN authentication.",
-        sec_quiz: "Paperless Quiz System",
-        desc_quiz: "Interactive countdown timer and anti-cheat indicators. The Socratic AI tutor is strictly locked during quizzes.",
-        sec_tutor: "Socratic AI Tutor Sheet",
-        desc_tutor: "Demonstrating the pedagogical conversation model: L.A.R.A AI provides guidance without giving the direct answer.",
-        sec_network: "Network & Sync Status Badges",
-        desc_network: "Indicators communicating real-time connection status across the offline classroom."
+        doc_title: "Material Design 3",
+        doc_subtitle: "L.A.R.A UI specifications & interactive mobile preview",
+        nav_simulator: "Live Mobile View",
+        nav_colors: "Color Roles",
+        nav_subjects: "Subject Tints",
+        nav_buttons: "Buttons & FAB",
+        nav_cards: "Cards",
+        nav_quiz: "Paperless Quiz",
+        nav_tutor: "Socratic AI",
+        sec_simulator: "Interactive Mobile Screen Preview",
+        desc_simulator: "Simulating how the L.A.R.A Android client renders on an elementary student's phone (360x720dp).",
+        sec_colors: "Color Roles",
+        desc_colors: "Material 3 baseline color tokens supporting light and dark classroom modes.",
+        sec_subjects: "Subject Tints",
+        desc_subjects: "Consistent color coding for elementary subjects.",
+        sec_buttons: "Buttons & Actions",
+        desc_buttons: "Touch targets enforce a minimum 48dp height (56dp for FABs).",
+        btn_primary: "Submit Work",
+        btn_tonal: "Play Lesson",
+        btn_outlined: "Save for Home",
+        btn_fab: "Ask L.A.R.A AI"
       },
       fil: {
-        doc_title: "Sistema ng Disenyong Material 3",
-        doc_subtitle: "Pamantayan sa disenyo at mga bahagi ng UI para sa L.A.R.A (DepEd Elementarya Baitang 1 hanggang 6)",
-        sec_principles: "Mga Prinsipyo para sa Elementarya",
-        desc_principles: "Ang L.A.R.A ay binuo para sa mga mag-aaral sa elementarya sa Pilipinas gamit ang mga murang Android phone at laptop. May malalaking pindutan at malinaw na kulay.",
-        sec_colors: "Mga Tungkulin ng Kulay sa Material 3",
-        desc_colors: "Paleta ng kulay na sumusuporta sa maliwanag at madilim na tema ng silid-aralan.",
-        sec_subjects: "Kodigo ng Kulay sa mga Asignatura",
-        desc_subjects: "Mga gabay na kulay upang mabilis makilala ng mga bata ang Agham, Matematika, at iba pang aralin.",
-        sec_typography: "Sukat ng mga Titik",
-        desc_typography: "Malalaki at malinaw na titik para sa mga batang nagsasanay magbasa.",
-        sec_buttons: "Mga Pindutan at Laki ng Pindot",
-        desc_buttons: "Sumusunod sa 48dp / 56dp na taas upang hindi magkamali sa pagpindot ang mga bata.",
-        btn_primary: "Pangunahing Pindutan",
-        btn_tonal: "Pangalawang Pindutan",
-        btn_outlined: "May Linyang Pindutan",
-        btn_text: "Pindutang Teksto",
-        btn_fab: "Magtanong kay L.A.R.A AI",
-        sec_cards: "Mga Kard ng Silid-Aralan",
-        desc_cards: "Mga lalagyan para sa mga anunsyo, aralin, bidyo, at pagsusulit.",
-        sec_inputs: "Mga Patlang at PIN",
-        desc_inputs: "Malinis na patlang para sa rehistrasyon, LRN, at 4-digit PIN.",
-        sec_quiz: "Sistema ng Pagsusulit na Walang Papel",
-        desc_quiz: "Orasan ng pagsusulit at proteksyon laban sa pandaraya. Nakakandado ang AI habang may pagsusulit.",
-        sec_tutor: "Gabay ng Socratic AI Tutor",
-        desc_tutor: "Gumagabay nang hakbang-hakbang nang hindi ibinibigay ang direktang sagot.",
-        sec_network: "Mga Tanda ng Katayuan ng Network",
-        desc_network: "Mga tanda na nagpapakita kung nakakabit sa lokal na hub o nag-aaral sa bahay."
+        doc_title: "Disenyong Material 3",
+        doc_subtitle: "Pamantayan sa UI ng L.A.R.A at interactive mobile preview",
+        nav_simulator: "Tingnan sa Mobile",
+        nav_colors: "Kulay",
+        nav_subjects: "Asignatura",
+        nav_buttons: "Mga Pindutan",
+        nav_cards: "Mga Kard",
+        nav_quiz: "Pagsusulit",
+        nav_tutor: "Socratic AI",
+        sec_simulator: "Preview sa Screen ng Mobile",
+        desc_simulator: "Ipinapakita ang hitsura ng L.A.R.A Android client sa cellphone ng mag-aaral (360x720dp).",
+        sec_colors: "Tungkulin ng Kulay",
+        desc_colors: "Maliwanag at madilim na tema para sa silid-aralan.",
+        sec_subjects: "Kulay ng Asignatura",
+        desc_subjects: "Kodigo ng kulay sa Agham, Matematika, at iba pang aralin.",
+        sec_buttons: "Mga Pindutan",
+        desc_buttons: "May 48dp na taas upang madaling pindutin ng bata.",
+        btn_primary: "Ipasa ang Sagot",
+        btn_tonal: "Panoorin ang Aralin",
+        btn_outlined: "I-save sa Bahay",
+        btn_fab: "Magtanong kay L.A.R.A AI"
       }
     };
 
     function toggleLanguage() {
       currentLang = currentLang === 'en' ? 'fil' : 'en';
-      document.getElementById('lang-btn').innerText = currentLang === 'en' ? 'Language: English' : 'Wika: Filipino';
+      document.getElementById('lang-label').innerText = currentLang === 'en' ? 'English' : 'Filipino';
       
       const elements = document.querySelectorAll('[data-i18n]');
       elements.forEach(el => {
@@ -1045,22 +1132,34 @@
     function toggleTheme() {
       currentTheme = currentTheme === 'light' ? 'dark' : 'light';
       document.documentElement.setAttribute('data-theme', currentTheme);
-      document.getElementById('theme-btn').innerText = currentTheme === 'light' ? 'Theme: Light' : 'Theme: Dark';
+      document.getElementById('theme-label').innerText = currentTheme === 'light' ? 'Light Mode' : 'Dark Mode';
     }
 
-    function setTimerDemo(mode) {
-      const pill = document.getElementById('demo-timer');
-      pill.className = 'quiz-timer-pill';
-      if (mode === 'safe') {
-        pill.classList.add('timer-safe');
-        pill.innerText = currentLang === 'en' ? 'Time Remaining: 18:45' : 'Natitirang Oras: 18:45';
-      } else if (mode === 'warning') {
-        pill.classList.add('timer-warning');
-        pill.innerText = currentLang === 'en' ? 'Warning: 04:30 Left' : 'Babala: 04:30 Natitira';
-      } else if (mode === 'danger') {
-        pill.classList.add('timer-danger');
-        pill.innerText = currentLang === 'en' ? 'Hurry! 01:15 Left' : 'Bilisan! 01:15 Natitira';
+    function switchPhoneScreen(screen) {
+      document.getElementById('screen-stream').style.display = 'none';
+      document.getElementById('screen-quiz').style.display = 'none';
+      document.getElementById('screen-tutor').style.display = 'none';
+
+      const fab = document.getElementById('phone-fab-btn');
+      if (screen === 'stream') {
+        document.getElementById('screen-stream').style.display = 'block';
+        fab.style.display = 'flex';
+      } else if (screen === 'quiz') {
+        document.getElementById('screen-quiz').style.display = 'block';
+        fab.style.display = 'none'; // Anti-cheat AI lockout on quizzes
+      } else if (screen === 'tutor') {
+        document.getElementById('screen-tutor').style.display = 'block';
+        fab.style.display = 'none';
       }
+
+      // Update screen tabs
+      const tabs = document.querySelectorAll('.screen-tab');
+      tabs.forEach((t, index) => {
+        t.classList.remove('active-tab');
+        if ((screen === 'stream' && index === 0) || (screen === 'quiz' && index === 1) || (screen === 'tutor' && index === 2)) {
+          t.classList.add('active-tab');
+        }
+      });
     }
   </script>
 </body>
