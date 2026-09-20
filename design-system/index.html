@@ -75,7 +75,6 @@
       /* Elevations */
       --md-sys-elevation-1: 0px 1px 3px 1px rgba(0,0,0,0.15), 0px 1px 2px 0px rgba(0,0,0,0.30);
       --md-sys-elevation-2: 0px 2px 6px 2px rgba(0,0,0,0.15), 0px 1px 2px 0px rgba(0,0,0,0.30);
-      --md-sys-elevation-3: 0px 4px 8px 3px rgba(0,0,0,0.15), 0px 1px 3px 0px rgba(0,0,0,0.30);
     }
 
     [data-theme="dark"] {
@@ -162,11 +161,14 @@
     .icon-lg {
       width: 24px;
       height: 24px;
+      vertical-align: middle;
+      fill: currentColor;
+      flex-shrink: 0;
     }
 
     /* Sidebar Navigation */
     aside {
-      width: 260px;
+      width: 250px;
       background-color: var(--md-sys-color-surface-container-low);
       border-right: 1px solid var(--md-sys-color-outline-variant);
       padding: 24px 12px;
@@ -226,14 +228,14 @@
     main {
       flex: 1;
       padding: 28px 40px 60px 40px;
-      max-width: 1200px;
+      max-width: 1100px;
     }
 
     header.top-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
       padding-bottom: 16px;
       border-bottom: 1px solid var(--md-sys-color-outline-variant);
       flex-wrap: wrap;
@@ -260,18 +262,12 @@
       cursor: pointer;
     }
 
-    .btn-toggle.active-mode {
-      background-color: var(--md-sys-color-primary);
-      color: var(--md-sys-color-on-primary);
-      border-color: var(--md-sys-color-primary);
-    }
-
     .btn-toggle:hover {
       background: var(--md-sys-color-surface-container-high);
     }
 
     section {
-      margin-bottom: 44px;
+      margin-bottom: 48px;
       scroll-margin-top: 30px;
     }
 
@@ -435,6 +431,36 @@
       margin-bottom: 12px;
     }
 
+    /* Form Fields */
+    .input-group {
+      margin-bottom: 14px;
+      max-width: 380px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--md-sys-color-on-surface-variant);
+      margin-bottom: 4px;
+    }
+
+    .input-field {
+      width: 100%;
+      min-height: 48px;
+      padding: 0 14px;
+      border-radius: var(--md-sys-shape-corner-extra-small);
+      border: 1px solid var(--md-sys-color-outline);
+      background-color: var(--md-sys-color-surface);
+      color: var(--md-sys-color-on-surface);
+      font-size: 14px;
+    }
+
+    .input-field:focus {
+      outline: 2px solid var(--md-sys-color-primary);
+      border-color: var(--md-sys-color-primary);
+    }
+
     /* Status Badges */
     .badge {
       display: inline-flex;
@@ -499,186 +525,68 @@
       100% { opacity: 1; }
     }
 
-    /* ----------------------------------------------------
-       MOBILE SIMULATOR STYLES
-       ---------------------------------------------------- */
-    .mobile-stage {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 20px 0 40px 0;
-    }
-
-    .screen-switcher {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 16px;
-      background: var(--md-sys-color-surface-container);
-      padding: 4px;
-      border-radius: var(--md-sys-shape-corner-full);
+    /* Chat Sheet */
+    .tutor-sheet {
+      background-color: var(--md-sys-color-surface-container);
       border: 1px solid var(--md-sys-color-outline-variant);
+      border-radius: var(--md-sys-shape-corner-extra-large) var(--md-sys-shape-corner-extra-large) 0 0;
+      padding: 18px;
+      max-width: 480px;
     }
 
-    .screen-tab {
-      padding: 8px 16px;
-      border-radius: var(--md-sys-shape-corner-full);
-      border: none;
-      background: transparent;
-      color: var(--md-sys-color-on-surface-variant);
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .screen-tab.active-tab {
-      background: var(--md-sys-color-primary);
-      color: var(--md-sys-color-on-primary);
-    }
-
-    /* Phone Shell */
-    .phone-mockup {
-      width: 360px;
-      height: 720px;
-      background-color: var(--md-sys-color-surface);
-      border: 12px solid #1e1e1e;
-      border-radius: 40px;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Phone Notch / Camera */
-    .phone-notch {
-      width: 100px;
-      height: 20px;
-      background: #1e1e1e;
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      border-bottom-left-radius: 12px;
-      border-bottom-right-radius: 12px;
-      z-index: 100;
-    }
-
-    /* Android Status Bar */
-    .phone-status-bar {
-      height: 32px;
-      padding: 4px 16px 0 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--md-sys-color-on-surface-variant);
-      z-index: 90;
-      background-color: var(--md-sys-color-surface);
-    }
-
-    /* Android Top App Bar */
-    .phone-app-bar {
-      background-color: var(--md-sys-color-surface-container);
-      padding: 10px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--md-sys-color-outline-variant);
-    }
-
-    .phone-app-bar .subject-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--md-sys-color-on-surface);
-    }
-
-    .phone-app-bar .class-code {
-      font-size: 11px;
-      color: var(--md-sys-color-on-surface-variant);
-    }
-
-    /* Phone Scrollable Screen Content */
-    .phone-body {
-      flex: 1;
-      padding: 14px;
-      overflow-y: auto;
-      background-color: var(--md-sys-color-background);
-      position: relative;
-    }
-
-    /* Floating Action Button inside Phone */
-    .phone-fab {
-      position: absolute;
-      bottom: 74px;
-      right: 14px;
-      background-color: var(--md-sys-color-primary-container);
-      color: var(--md-sys-color-on-primary-container);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 16px;
+    .chat-bubble {
+      padding: 10px 14px;
       border-radius: var(--md-sys-shape-corner-large);
-      font-size: 12px;
-      font-weight: 700;
-      box-shadow: var(--md-sys-elevation-3);
-      cursor: pointer;
-      border: none;
-      z-index: 50;
+      font-size: 13px;
+      line-height: 18px;
+      margin-bottom: 8px;
+      max-width: 88%;
     }
 
-    /* M3 Bottom Navigation Bar */
-    .phone-bottom-nav {
-      height: 64px;
-      background-color: var(--md-sys-color-surface-container);
-      border-top: 1px solid var(--md-sys-color-outline-variant);
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      padding: 0 4px;
-      z-index: 80;
+    .chat-user {
+      background-color: var(--md-sys-color-primary);
+      color: var(--md-sys-color-on-primary);
+      margin-left: auto;
+      border-bottom-right-radius: 4px;
     }
 
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      color: var(--md-sys-color-on-surface-variant);
+    .chat-ai {
+      background-color: var(--md-sys-color-surface-container-high);
+      color: var(--md-sys-color-on-surface);
+      margin-right: auto;
+      border-bottom-left-radius: 4px;
+    }
+
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .spec-table th, .spec-table td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--md-sys-color-outline-variant);
+      font-size: 13px;
+    }
+
+    .spec-table th {
       font-size: 11px;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      padding: 4px 12px;
-      border-radius: var(--md-sys-shape-corner-full);
-    }
-
-    .nav-item.active-nav {
-      color: var(--md-sys-color-primary);
-    }
-
-    .nav-item.active-nav .nav-indicator {
-      background-color: var(--md-sys-color-primary-container);
-      padding: 4px 16px;
-      border-radius: var(--md-sys-shape-corner-full);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      color: var(--md-sys-color-on-surface-variant);
+      text-transform: uppercase;
     }
   </style>
 </head>
 <body>
 
-  <!-- SVG Icon Sprite Definitions -->
-    <!-- Official Google Material Symbols (SVG Sprite) -->
+  <!-- Official Google Material Symbols Sprite -->
   <svg style="display: none;">
     <defs>
-      <!-- Palette (Colors) -->
+      <!-- Palette -->
       <symbol id="icon-palette" viewBox="0 0 24 24">
         <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10c1.38 0 2.5-1.12 2.5-2.5 0-.61-.23-1.2-.64-1.67-.08-.1-.13-.21-.13-.33 0-.28.22-.5.5-.5H16c3.31 0 6-2.69 6-6 0-4.96-4.49-9-10-9zm-5.5 11c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-4c-.83 0-1.5-.67-1.5-1.5S8.67 6 9.5 6s1.5.67 1.5 1.5S10.33 9 9.5 9zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 6 14.5 6s1.5.67 1.5 1.5S15.33 9 14.5 9zm3 4c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
       </symbol>
 
-      <!-- School / Graduation Cap (Subjects) -->
+      <!-- School / Subjects -->
       <symbol id="icon-school" viewBox="0 0 24 24">
         <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
       </symbol>
@@ -762,16 +670,6 @@
       <symbol id="icon-dark" viewBox="0 0 24 24">
         <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
       </symbol>
-
-      <!-- Smartphone / Mobile -->
-      <symbol id="icon-mobile" viewBox="0 0 24 24">
-        <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
-      </symbol>
-
-      <!-- Camera -->
-      <symbol id="icon-camera" viewBox="0 0 24 24">
-        <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
-      </symbol>
     </defs>
   </svg>
 
@@ -782,13 +680,15 @@
       <span class="brand-title">Design System</span>
     </div>
     <nav>
-      <a href="#simulator" class="active"><svg class="icon"><use href="#icon-mobile"/></svg> <span data-i18n="nav_simulator">Live Mobile View</span></a>
-      <a href="#colors"><svg class="icon"><use href="#icon-palette"/></svg> <span data-i18n="nav_colors">Color Roles</span></a>
+      <a href="#colors" class="active"><svg class="icon"><use href="#icon-palette"/></svg> <span data-i18n="nav_colors">Color Roles</span></a>
       <a href="#subjects"><svg class="icon"><use href="#icon-school"/></svg> <span data-i18n="nav_subjects">Subject Tints</span></a>
+      <a href="#typography"><svg class="icon"><use href="#icon-text"/></svg> <span data-i18n="nav_typography">Typography</span></a>
       <a href="#buttons"><svg class="icon"><use href="#icon-touch"/></svg> <span data-i18n="nav_buttons">Buttons & FAB</span></a>
       <a href="#cards"><svg class="icon"><use href="#icon-campaign"/></svg> <span data-i18n="nav_cards">Cards</span></a>
+      <a href="#inputs"><svg class="icon"><use href="#icon-text"/></svg> <span data-i18n="nav_inputs">Form Fields</span></a>
       <a href="#quiz"><svg class="icon"><use href="#icon-quiz"/></svg> <span data-i18n="nav_quiz">Paperless Quiz</span></a>
       <a href="#tutor"><svg class="icon"><use href="#icon-ai"/></svg> <span data-i18n="nav_tutor">Socratic AI</span></a>
+      <a href="#network"><svg class="icon"><use href="#icon-wifi"/></svg> <span data-i18n="nav_network">Network States</span></a>
     </nav>
   </aside>
 
@@ -797,7 +697,7 @@
     <header class="top-bar">
       <div>
         <h1 data-i18n="doc_title">Material Design 3</h1>
-        <p class="subtext" data-i18n="doc_subtitle" style="margin-bottom: 0;">L.A.R.A UI specifications & interactive mobile preview</p>
+        <p class="subtext" data-i18n="doc_subtitle" style="margin-bottom: 0;">L.A.R.A UI specifications for DepEd Elementary (Grades 1 to 6)</p>
       </div>
       <div class="toolbar-actions">
         <button class="btn-toggle" onclick="toggleLanguage()">
@@ -810,176 +710,6 @@
         </button>
       </div>
     </header>
-
-    <!-- LIVE MOBILE VIEW SIMULATOR -->
-    <section id="simulator">
-      <h2><svg class="icon-lg"><use href="#icon-mobile"/></svg> <span data-i18n="sec_simulator">Interactive Mobile Screen Preview</span></h2>
-      <p class="subtext" data-i18n="desc_simulator">Simulating how the L.A.R.A Android client renders on an elementary student's phone (360x720dp).</p>
-
-      <div class="mobile-stage">
-        <!-- Screen Selector -->
-        <div class="screen-switcher">
-          <button class="screen-tab active-tab" onclick="switchPhoneScreen('stream')">1. Stream (Aralin)</button>
-          <button class="screen-tab" onclick="switchPhoneScreen('quiz')">2. Timed Quiz (Pagsusulit)</button>
-          <button class="screen-tab" onclick="switchPhoneScreen('tutor')">3. Socratic AI Drawer</button>
-        </div>
-
-        <!-- Android Shell -->
-        <div class="phone-mockup">
-          <div class="phone-notch"></div>
-          
-          <!-- Status Bar -->
-          <div class="phone-status-bar">
-            <span>08:30</span>
-            <div style="display: flex; gap: 6px; align-items: center;">
-              <svg class="icon" style="width: 14px; height: 14px;"><use href="#icon-wifi"/></svg>
-              <span>95%</span>
-            </div>
-          </div>
-
-          <!-- Top App Bar -->
-          <div class="phone-app-bar">
-            <div>
-              <div class="subject-title">Grade 4 - Science</div>
-              <div class="class-code">Code: SCI4-AG • Section Aguinaldo</div>
-            </div>
-            <span class="badge badge-online" style="font-size: 10px; padding: 2px 8px;">
-              <svg class="icon" style="width: 12px; height: 12px;"><use href="#icon-wifi"/></svg> Hub OK
-            </span>
-          </div>
-
-          <!-- Screen 1: Stream Body -->
-          <div class="phone-body" id="screen-stream">
-            <!-- Announcement -->
-            <div class="md-card elevated" style="margin-bottom: 12px; padding: 12px;">
-              <span class="card-badge" style="background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container);">
-                <svg class="icon" style="width: 14px; height: 14px;"><use href="#icon-campaign"/></svg> Anunsyo
-              </span>
-              <div class="card-title" style="font-size: 14px;">Magdala ng Dahon Bukas</div>
-              <div class="card-text" style="font-size: 12px; margin-bottom: 8px;">
-                Mangyaring magpulot ng 3 dahon mula sa inyong bakuran para sa aralin sa Photosynthesis.
-              </div>
-              <div style="font-size: 10px; color: var(--md-sys-color-outline);">Teacher Maria • 08:30 AM</div>
-            </div>
-
-            <!-- Video Lesson Card -->
-            <div class="md-card outlined" style="margin-bottom: 12px; padding: 12px;">
-              <span class="card-badge" style="background: var(--md-subject-science-container); color: var(--md-subject-science);">
-                <svg class="icon" style="width: 14px; height: 14px;"><use href="#icon-play"/></svg> Bidyo (6m 30s)
-              </span>
-              <div class="card-title" style="font-size: 14px;">Paano Umiinom ng Tubig ang Halaman</div>
-              <div class="card-text" style="font-size: 12px; margin-bottom: 10px;">
-                Panoorin ang proseso ng xylem at ugat.
-              </div>
-              <div style="display: flex; gap: 8px;">
-                <button class="btn btn-tonal" style="min-height: 38px; font-size: 12px; padding: 0 12px; flex: 1;">
-                  <svg class="icon" style="width: 16px; height: 16px;"><use href="#icon-play"/></svg> Panoorin
-                </button>
-                <button class="btn btn-outlined" style="min-height: 38px; font-size: 12px; padding: 0 12px; flex: 1;">
-                  <svg class="icon" style="width: 16px; height: 16px;"><use href="#icon-download"/></svg> I-save
-                </button>
-              </div>
-            </div>
-
-            <!-- Homework Card with Camera -->
-            <div class="md-card outlined" style="margin-bottom: 12px; padding: 12px;">
-              <span class="card-badge" style="background: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container);">
-                <svg class="icon" style="width: 14px; height: 14px;"><use href="#icon-camera"/></svg> Takdang Aralin
-              </span>
-              <div class="card-title" style="font-size: 14px;">Gawain 2: Iguhit ang Bahagi ng Halaman</div>
-              <div class="card-text" style="font-size: 12px; margin-bottom: 10px;">
-                Kunan ng litrato ang inyong drowing sa kuwaderno.
-              </div>
-              <button class="btn btn-primary" style="min-height: 38px; font-size: 12px; width: 100%;">
-                <svg class="icon" style="width: 16px; height: 16px;"><use href="#icon-camera"/></svg> Kunan ng Litrato
-              </button>
-            </div>
-          </div>
-
-          <!-- Screen 2: Quiz Body -->
-          <div class="phone-body" id="screen-quiz" style="display: none;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-              <span class="quiz-timer-pill timer-safe" style="font-size: 12px; padding: 4px 10px;">
-                <svg class="icon" style="width: 14px; height: 14px;"><use href="#icon-timer"/></svg> 18:45 Natitira
-              </span>
-              <span class="badge badge-offline" style="font-size: 10px; padding: 2px 6px;">
-                <svg class="icon" style="width: 12px; height: 12px;"><use href="#icon-lock"/></svg> AI Lock
-              </span>
-            </div>
-
-            <div class="md-card outlined" style="padding: 12px;">
-              <div style="font-size: 11px; font-weight: 700; color: var(--md-sys-color-outline); margin-bottom: 6px;">Tanong 3 ng 15</div>
-              <p style="font-size: 13px; font-weight: 700; margin-bottom: 12px;">
-                Anong berdeng kemikal ang sumasipsip ng sikat ng araw sa mga dahon?
-              </p>
-              <div style="display: flex; flex-direction: column; gap: 8px;">
-                <label style="display: flex; align-items: center; gap: 10px; padding: 10px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px; font-size: 12px; cursor: pointer;">
-                  <input type="radio" name="phone-q3" checked> A) Chlorophyll
-                </label>
-                <label style="display: flex; align-items: center; gap: 10px; padding: 10px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px; font-size: 12px; cursor: pointer;">
-                  <input type="radio" name="phone-q3"> B) Oxygen
-                </label>
-                <label style="display: flex; align-items: center; gap: 10px; padding: 10px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px; font-size: 12px; cursor: pointer;">
-                  <input type="radio" name="phone-q3"> C) Nitrogen
-                </label>
-              </div>
-            </div>
-
-            <button class="btn btn-primary" style="width: 100%; min-height: 44px; margin-top: 14px; font-size: 13px;">
-              Susunod na Tanong
-            </button>
-          </div>
-
-          <!-- Screen 3: Socratic AI Tutor Sheet -->
-          <div class="phone-body" id="screen-tutor" style="display: none; padding: 0;">
-            <div style="padding: 12px; opacity: 0.35;">
-              <div class="card-title" style="font-size: 13px;">Aralin 3: Photosynthesis</div>
-              <p style="font-size: 11px;">Ang photosynthesis ay ang paraan kung paano gumagawa ng pagkain ang mga halaman gamit ang araw, tubig, at hangin...</p>
-            </div>
-
-            <div class="tutor-sheet" style="position: absolute; bottom: 0; left: 0; right: 0; max-width: 100%; border-radius: 20px 20px 0 0; box-shadow: var(--md-sys-elevation-3);">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                <div style="display: flex; align-items: center; gap: 6px;">
-                  <svg class="icon" style="color: var(--md-sys-color-primary); width: 18px; height: 18px;"><use href="#icon-ai"/></svg>
-                  <strong style="font-size: 13px;">L.A.R.A AI</strong>
-                </div>
-                <span class="badge badge-online" style="font-size: 10px; padding: 2px 6px;">Aralin 3</span>
-              </div>
-
-              <div class="chat-bubble chat-user" style="font-size: 12px;">Ano ang sagot sa tanong 2?</div>
-              <div class="chat-bubble chat-ai" style="font-size: 12px;">
-                Hindi ko maibibigay ang mismong sagot, pero tutulungan kita! Tingnan ang talata 2. Anong hangin ang hinihigop ng halaman?
-              </div>
-              <div class="chat-bubble chat-user" style="font-size: 12px;">Carbon dioxide po?</div>
-              <div class="chat-bubble chat-ai" style="font-size: 12px;">Tumpak! Ngayon, ano naman ang inilalabas nila para malanghap natin?</div>
-            </div>
-          </div>
-
-          <!-- Floating Button on Screen 1 -->
-          <button class="phone-fab" id="phone-fab-btn" onclick="switchPhoneScreen('tutor')">
-            <svg class="icon"><use href="#icon-ai"/></svg> Magtanong
-          </button>
-
-          <!-- Bottom Navigation Bar -->
-          <div class="phone-bottom-nav">
-            <div class="nav-item active-nav" onclick="switchPhoneScreen('stream')">
-              <div class="nav-indicator">
-                <svg class="icon" style="width: 18px; height: 18px;"><use href="#icon-campaign"/></svg>
-              </div>
-              <span>Stream</span>
-            </div>
-            <div class="nav-item" onclick="switchPhoneScreen('quiz')">
-              <svg class="icon" style="width: 18px; height: 18px;"><use href="#icon-quiz"/></svg>
-              <span>Gawain</span>
-            </div>
-            <div class="nav-item" onclick="switchPhoneScreen('stream')">
-              <svg class="icon" style="width: 18px; height: 18px;"><use href="#icon-school"/></svg>
-              <span>Grado</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Colors Reference -->
     <section id="colors">
@@ -1035,6 +765,46 @@
       </div>
     </section>
 
+    <!-- Typography Scale -->
+    <section id="typography">
+      <h2><svg class="icon-lg"><use href="#icon-text"/></svg> <span data-i18n="sec_typography">Typography Scale</span></h2>
+      <p class="subtext" data-i18n="desc_typography">Clear, legible scale tuned for children learning to read.</p>
+
+      <div class="component-box">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Role</th>
+              <th>Sample</th>
+              <th>Scale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Headline</td>
+              <td style="font-size: 24px; font-weight: 600;">Grade 4 - Science</td>
+              <td>24px / 32px</td>
+            </tr>
+            <tr>
+              <td>Title</td>
+              <td style="font-size: 18px; font-weight: 600;">Lesson 3: Photosynthesis</td>
+              <td>18px / 24px</td>
+            </tr>
+            <tr>
+              <td>Body</td>
+              <td style="font-size: 15px;">Plants use sunlight and water to produce food.</td>
+              <td>15px / 22px</td>
+            </tr>
+            <tr>
+              <td>Label</td>
+              <td style="font-size: 13px; font-weight: 600;">SUBMIT ANSWERS</td>
+              <td>13px / 16px</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <!-- Buttons Reference -->
     <section id="buttons">
       <h2><svg class="icon-lg"><use href="#icon-touch"/></svg> <span data-i18n="sec_buttons">Buttons & Actions</span></h2>
@@ -1061,6 +831,167 @@
         </div>
       </div>
     </section>
+
+    <!-- Cards Reference -->
+    <section id="cards">
+      <h2><svg class="icon-lg"><use href="#icon-campaign"/></svg> <span data-i18n="sec_cards">Classroom Cards</span></h2>
+      <p class="subtext" data-i18n="desc_cards">Structured containers for announcements, video modules, and paperless quizzes.</p>
+
+      <div class="card-grid">
+        <!-- Announcement Card -->
+        <div class="md-card elevated">
+          <span class="card-badge" style="background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container);">
+            <svg class="icon"><use href="#icon-campaign"/></svg> Announcement
+          </span>
+          <div class="card-title">Bring leaves tomorrow</div>
+          <div class="card-text">Please collect 3 fallen leaves from your garden for our plant biology activity.</div>
+          <div style="font-size: 11px; color: var(--md-sys-color-outline);">Teacher Maria • 8:30 AM</div>
+        </div>
+
+        <!-- Video Card -->
+        <div class="md-card outlined">
+          <span class="card-badge" style="background: var(--md-subject-science-container); color: var(--md-subject-science);">
+            <svg class="icon"><use href="#icon-play"/></svg> Video (6m 30s)
+          </span>
+          <div class="card-title">How Plants Drink Water</div>
+          <div class="card-text">HTTP 206 partial streaming with instant seeking over Wi-Fi.</div>
+          <div class="button-row">
+            <button class="btn btn-tonal" style="min-height: 40px; font-size: 12px; padding: 0 14px;">
+              <svg class="icon"><use href="#icon-play"/></svg> Stream
+            </button>
+            <button class="btn btn-outlined" style="min-height: 40px; font-size: 12px; padding: 0 14px;">
+              <svg class="icon"><use href="#icon-download"/></svg> Download
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Card -->
+        <div class="md-card outlined">
+          <span class="card-badge" style="background: var(--md-state-pending-container); color: var(--md-state-pending);">
+            <svg class="icon"><use href="#icon-timer"/></svg> 20 Min Quiz
+          </span>
+          <div class="card-title">Weekly Test: Biology</div>
+          <div class="card-text">15 items with instant auto-grading upon submission.</div>
+          <button class="btn btn-primary" style="width: 100%; min-height: 42px; font-size: 13px;">
+            <svg class="icon"><use href="#icon-quiz"/></svg> Start Quiz
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form Fields Reference -->
+    <section id="inputs">
+      <h2><svg class="icon-lg"><use href="#icon-text"/></svg> <span data-i18n="sec_inputs">Form Fields & PIN Input</span></h2>
+      <p class="subtext" data-i18n="desc_inputs">Clean inputs for self-registration, Class Code entry, and 4-digit PIN authentication.</p>
+
+      <div class="component-box">
+        <div class="input-group">
+          <label>Full Name</label>
+          <input type="text" class="input-field" value="Juan Dela Cruz">
+        </div>
+        <div class="input-group">
+          <label>Learner Reference Number (LRN)</label>
+          <input type="text" class="input-field" value="123456789012">
+        </div>
+        <div class="input-group">
+          <label>Class Code (6 Characters)</label>
+          <input type="text" class="input-field" value="SCI4-AG" style="font-weight: 700; letter-spacing: 2px;">
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz UI Reference -->
+    <section id="quiz">
+      <h2><svg class="icon-lg"><use href="#icon-quiz"/></svg> <span data-i18n="sec_quiz">Paperless Quiz System</span></h2>
+      <p class="subtext" data-i18n="desc_quiz">Visual timer with hard AI tutor lockout during active assessment.</p>
+
+      <div class="component-box">
+        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 20px;">
+          <span class="quiz-timer-pill timer-safe" id="demo-timer">
+            <svg class="icon"><use href="#icon-timer"/></svg>
+            <span id="timer-text">18:45 Remaining</span>
+          </span>
+          <button class="btn-toggle" onclick="setTimerDemo('safe')">>5m</button>
+          <button class="btn-toggle" onclick="setTimerDemo('warning')">&lt;5m</button>
+          <button class="btn-toggle" onclick="setTimerDemo('danger')">&lt;2m</button>
+        </div>
+
+        <div class="md-card outlined" style="max-width: 550px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <span style="font-weight: 700; font-size: 13px;">Item 3 of 15</span>
+            <span class="badge badge-offline">
+              <svg class="icon"><use href="#icon-lock"/></svg> AI Locked
+            </span>
+          </div>
+          <p style="font-size: 15px; font-weight: 600; margin-bottom: 12px;">What green pigment absorbs sunlight in plants?</p>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label style="display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px; cursor: pointer;">
+              <input type="radio" name="q3" checked> A) Chlorophyll
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 8px; cursor: pointer;">
+              <input type="radio" name="q3"> B) Oxygen
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Socratic AI Tutor Reference -->
+    <section id="tutor">
+      <h2><svg class="icon-lg"><use href="#icon-ai"/></svg> <span data-i18n="sec_tutor">Socratic AI Tutor Sheet</span></h2>
+      <p class="subtext" data-i18n="desc_tutor">Pedagogical chat model: guides step-by-step without direct answers.</p>
+
+      <div class="component-box">
+        <div class="tutor-sheet">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <svg class="icon" style="color: var(--md-sys-color-primary);"><use href="#icon-ai"/></svg>
+              <strong style="font-size: 14px;">L.A.R.A AI</strong>
+            </div>
+            <span class="badge badge-online">Grounded: Lesson 3</span>
+          </div>
+
+          <div class="chat-bubble chat-user">
+            What is the answer to question 2?
+          </div>
+
+          <div class="chat-bubble chat-ai">
+            I cannot give you the answer directly, but let us discover it together! Take a look at paragraph 2 of your module. What gas do plants take in from the air?
+          </div>
+
+          <div class="chat-bubble chat-user">
+            Carbon dioxide?
+          </div>
+
+          <div class="chat-bubble chat-ai">
+            Correct! Combined with water from the roots, what do they produce next?
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Network Badges Reference -->
+    <section id="network">
+      <h2><svg class="icon-lg"><use href="#icon-wifi"/></svg> <span data-i18n="sec_network">Network & Sync Status</span></h2>
+      <p class="subtext" data-i18n="desc_network">Visual indicators communicating offline LAN status.</p>
+
+      <div class="component-box">
+        <div class="button-row">
+          <span class="badge badge-online">
+            <svg class="icon"><use href="#icon-wifi"/></svg> Connected to Hub (192.168.1.50)
+          </span>
+          <span class="badge badge-offline">
+            <svg class="icon"><use href="#icon-wifi-off"/></svg> Offline Mode (Home Study)
+          </span>
+          <span class="badge badge-pending">
+            <svg class="icon"><use href="#icon-schedule"/></svg> Pending Approval
+          </span>
+          <span class="badge badge-queued">
+            <svg class="icon"><use href="#icon-sync"/></svg> Queued for Sync (1 item)
+          </span>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script>
@@ -1070,49 +1001,73 @@
     const translations = {
       en: {
         doc_title: "Material Design 3",
-        doc_subtitle: "L.A.R.A UI specifications & interactive mobile preview",
-        nav_simulator: "Live Mobile View",
+        doc_subtitle: "L.A.R.A UI specifications for DepEd Elementary (Grades 1 to 6)",
         nav_colors: "Color Roles",
         nav_subjects: "Subject Tints",
+        nav_typography: "Typography",
         nav_buttons: "Buttons & FAB",
         nav_cards: "Cards",
+        nav_inputs: "Form Fields",
         nav_quiz: "Paperless Quiz",
         nav_tutor: "Socratic AI",
-        sec_simulator: "Interactive Mobile Screen Preview",
-        desc_simulator: "Simulating how the L.A.R.A Android client renders on an elementary student's phone (360x720dp).",
+        nav_network: "Network States",
         sec_colors: "Color Roles",
         desc_colors: "Material 3 baseline color tokens supporting light and dark classroom modes.",
         sec_subjects: "Subject Tints",
         desc_subjects: "Consistent color coding for elementary subjects.",
+        sec_typography: "Typography Scale",
+        desc_typography: "Clear, legible scale tuned for children learning to read.",
         sec_buttons: "Buttons & Actions",
         desc_buttons: "Touch targets enforce a minimum 48dp height (56dp for FABs).",
         btn_primary: "Submit Work",
         btn_tonal: "Play Lesson",
         btn_outlined: "Save for Home",
-        btn_fab: "Ask L.A.R.A AI"
+        btn_fab: "Ask L.A.R.A AI",
+        sec_cards: "Classroom Cards",
+        desc_cards: "Structured containers for announcements, video modules, and paperless quizzes.",
+        sec_inputs: "Form Fields & PIN Input",
+        desc_inputs: "Clean inputs for self-registration, Class Code entry, and 4-digit PIN authentication.",
+        sec_quiz: "Paperless Quiz System",
+        desc_quiz: "Visual timer with hard AI tutor lockout during active assessment.",
+        sec_tutor: "Socratic AI Tutor Sheet",
+        desc_tutor: "Pedagogical chat model: guides step-by-step without direct answers.",
+        sec_network: "Network & Sync Status",
+        desc_network: "Visual indicators communicating offline LAN status."
       },
       fil: {
         doc_title: "Disenyong Material 3",
-        doc_subtitle: "Pamantayan sa UI ng L.A.R.A at interactive mobile preview",
-        nav_simulator: "Tingnan sa Mobile",
+        doc_subtitle: "Pamantayan sa UI ng L.A.R.A para sa DepEd Elementarya (Baitang 1 hanggang 6)",
         nav_colors: "Kulay",
         nav_subjects: "Asignatura",
+        nav_typography: "Sukat ng Titik",
         nav_buttons: "Mga Pindutan",
         nav_cards: "Mga Kard",
+        nav_inputs: "Mga Patlang",
         nav_quiz: "Pagsusulit",
         nav_tutor: "Socratic AI",
-        sec_simulator: "Preview sa Screen ng Mobile",
-        desc_simulator: "Ipinapakita ang hitsura ng L.A.R.A Android client sa cellphone ng mag-aaral (360x720dp).",
+        nav_network: "Katayuan ng Network",
         sec_colors: "Tungkulin ng Kulay",
         desc_colors: "Maliwanag at madilim na tema para sa silid-aralan.",
         sec_subjects: "Kulay ng Asignatura",
         desc_subjects: "Kodigo ng kulay sa Agham, Matematika, at iba pang aralin.",
+        sec_typography: "Sukat ng Titik",
+        desc_typography: "Malalaki at malinaw na titik para sa mga batang nagbabasa.",
         sec_buttons: "Mga Pindutan",
         desc_buttons: "May 48dp na taas upang madaling pindutin ng bata.",
         btn_primary: "Ipasa ang Sagot",
         btn_tonal: "Panoorin ang Aralin",
         btn_outlined: "I-save sa Bahay",
-        btn_fab: "Magtanong kay L.A.R.A AI"
+        btn_fab: "Magtanong kay L.A.R.A AI",
+        sec_cards: "Mga Kard",
+        desc_cards: "Lalagyan para sa mga anunsyo, bidyo, at pagsusulit.",
+        sec_inputs: "Mga Patlang at PIN",
+        desc_inputs: "Malinis na patlang para sa rehistrasyon, LRN, at 4-digit PIN.",
+        sec_quiz: "Pagsusulit na Walang Papel",
+        desc_quiz: "May orasan at nakakandadong AI habang sumasagot.",
+        sec_tutor: "Socratic AI Tutor",
+        desc_tutor: "Gumagabay nang hindi ibinibigay ang mismong sagot.",
+        sec_network: "Katayuan ng Network",
+        desc_network: "Tanda kung nakakabit sa hub o nag-aaral sa bahay."
       }
     };
 
@@ -1135,31 +1090,20 @@
       document.getElementById('theme-label').innerText = currentTheme === 'light' ? 'Light Mode' : 'Dark Mode';
     }
 
-    function switchPhoneScreen(screen) {
-      document.getElementById('screen-stream').style.display = 'none';
-      document.getElementById('screen-quiz').style.display = 'none';
-      document.getElementById('screen-tutor').style.display = 'none';
-
-      const fab = document.getElementById('phone-fab-btn');
-      if (screen === 'stream') {
-        document.getElementById('screen-stream').style.display = 'block';
-        fab.style.display = 'flex';
-      } else if (screen === 'quiz') {
-        document.getElementById('screen-quiz').style.display = 'block';
-        fab.style.display = 'none'; // Anti-cheat AI lockout on quizzes
-      } else if (screen === 'tutor') {
-        document.getElementById('screen-tutor').style.display = 'block';
-        fab.style.display = 'none';
+    function setTimerDemo(mode) {
+      const pill = document.getElementById('demo-timer');
+      const text = document.getElementById('timer-text');
+      pill.className = 'quiz-timer-pill';
+      if (mode === 'safe') {
+        pill.classList.add('timer-safe');
+        text.innerText = currentLang === 'en' ? '18:45 Remaining' : '18:45 Natitira';
+      } else if (mode === 'warning') {
+        pill.classList.add('timer-warning');
+        text.innerText = currentLang === 'en' ? '04:30 Left (Warning)' : '04:30 Natitira (Babala)';
+      } else if (mode === 'danger') {
+        pill.classList.add('timer-danger');
+        text.innerText = currentLang === 'en' ? '01:15 Left (Hurry!)' : '01:15 Natitira (Bilisan!)';
       }
-
-      // Update screen tabs
-      const tabs = document.querySelectorAll('.screen-tab');
-      tabs.forEach((t, index) => {
-        t.classList.remove('active-tab');
-        if ((screen === 'stream' && index === 0) || (screen === 'quiz' && index === 1) || (screen === 'tutor' && index === 2)) {
-          t.classList.add('active-tab');
-        }
-      });
     }
   </script>
 </body>
