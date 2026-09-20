@@ -1,7 +1,9 @@
 # L.A.R.A Mobile Client Specification
 
 ## 1. Overview
-The **L.A.R.A Mobile Client** is a native Android application designed specifically for Filipino elementary school pupils (Grades 1 to 6). It provides a full, offline-first classroom experience operating across a local area network (LAN) with zero internet dependency, featuring paperless assessments, camera homework capture, and an adaptive Socratic AI tutor.
+The **L.A.R.A Mobile Client** is a dual-role native Android application designed for both **Pupils (Grades 1 to 6)** and **Teachers**. It provides a full, offline-first classroom experience operating across a local area network (LAN) with zero internet dependency. 
+
+For pupils, it features offline materials, video streaming, paperless assessments, camera homework capture, and an adaptive Socratic AI tutor. For teachers, it allows managing classes, one-click enrollee approvals on the go, starting paperless quizzes, and live score monitoring from a smartphone or tablet while moving around the classroom.
 
 ---
 
@@ -56,6 +58,17 @@ The **L.A.R.A Mobile Client** is a native Android application designed specifica
 * Adaptive Dual Execution:
   * If Physical RAM < 6GB: Streams hints from the Local Hub over WebSockets with real-time queue position display.
   * If Physical RAM >= 6GB and model bundle exists: Executes MiniCPM5-2B (Int4) 100% locally via `llama.cpp` JNI without network usage.
+
+---
+
+
+### 3.7 Teacher Mobile Capabilities (On-the-Go Classroom Control)
+When logged in with a Teacher account, the mobile app dynamically switches to the Teacher UI:
+* **Mobile Join Approvals:** Instant push notifications on the teacher's phone to Accept or Decline students entering Class Codes.
+* **Stream Broadcasting:** Post announcements and notices directly from the phone.
+* **Quiz Remote Controller:** Start and stop timed paperless quizzes with one tap while walking around the classroom.
+* **Live Assessment Monitor:** Real-time dashboard showing which pupils are currently answering, who has submitted, and auto-graded score distributions.
+* **Mobile Homework Review:** Review and score pupil camera photos directly from the phone.
 
 ---
 

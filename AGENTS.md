@@ -70,6 +70,7 @@ The AI tutor (**L.A.R.A AI**) is engineered for Filipino elementary pupils (Grad
 
 ### 4.1 Mobile Client (`mobile/`)
 * **Framework:** Native Android (Kotlin 2.x + Jetpack Compose + Material 3).
+* **Dual Roles:** Role-based UI switching for both **Student** and **Teacher** (Teacher can approve enrollments on-the-go, launch quizzes, and view live score telemetry from their phone).
 * **Architecture:** Clean Architecture + MVI/MVVM with Kotlin Coroutines and StateFlow.
 * **Database:** Room DB (SQLite) with compile-time query verification.
 * **Media:** Jetpack Media3 (ExoPlayer) with hardware decoding.
