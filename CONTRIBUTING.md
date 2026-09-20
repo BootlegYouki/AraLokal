@@ -1,63 +1,84 @@
-# Contributing to L.A.R.A
+# Contributing & Git Workflow Guide
 
-Thank you for contributing to the **L.A.R.A** (Localized Augmented Resource & Assessment) project. This guide establishes the development workflow, branch naming conventions, and commit standards for the capstone team.
-
----
-
-## 1. Non-Negotiable Core Rules
-
-Before writing any code, review [AGENTS.md](./AGENTS.md) and keep these four rules in mind:
-1. **100% Offline LAN:** Never add external cloud SDKs, Google Play APIs, Firebase, or external CDN links.
-2. **Budget Hardware Priority:** Mobile code must run smoothly on 3GB/4GB RAM entry-level phones (heap < 250MB).
-3. **Socratic AI Integrity:** The AI tutor must never output direct answers or homework keys, and must be hard-locked during active quizzes.
-4. **Google Material Design 3:** All UI components must use Material 3 with minimum 48dp/56dp touch targets and bilingual string support (English & Filipino).
+Welcome to the **L.A.R.A** repository. As a contributor, you are responsible for maintaining system stability, architectural invariants, and code quality.
 
 ---
 
-## 2. Git Branching Strategy
+## 1. Branching Architecture
 
-All work must be developed on feature branches branched from `main`:
+We follow an adapted GitFlow branching model tailored for multi-module capstone development:
 
-| Branch Prefix | Usage | Example |
-| :--- | :--- | :--- |
-| `feat/` | New features or modules | `feat/mobile-camera-capture` |
-| `fix/` | Bug fixes or stability patches | `fix/server-timer-sync` |
-| `docs/` | Documentation, PRD, or schema updates | `docs/update-er-diagram` |
-| `test/` | Stress tests, benchmarks, or unit tests | `test/wifi-router-40-devices` |
-| `refactor/` | Code cleanup with no functional changes | `refactor/desktop-sqlite-client` |
-
----
-
-## 3. Commit Message Standards (Conventional Commits)
-
-Commit messages must be clear, descriptive, and follow the Conventional Commits format:
-
-```text
-<type>(<scope>): <short description in present tense>
-
-[optional body explaining why the change was made]
-
-[optional footer: Closes #123]
+```
+feature/bug branches (feat/*, fix/*)
+          │
+          ▼  (PR + Lead Approval)
+       staging  ◄─── (Integration testing on classroom Wi-Fi)
+          │
+          ▼  (PR + Milestone Release)
+        main    ◄─── (Production / Defense-Ready)
 ```
 
-### Supported Types:
-* `feat`: A new feature or capability.
-* `fix`: A bug fix or crash resolution.
-* `docs`: Documentation updates only.
-* `refactor`: Code restructuring without bug fixes or new features.
-* `test`: Adding or correcting tests.
-* `chore`: Build tools, dependencies, or config changes.
-
-### Examples:
-* `feat(mobile): implement CameraX homework photo capture with JPEG compression`
-* `fix(server): resolve WebSocket heartbeat timeout on router disconnect`
-* `docs(prd): update DepEd elementary gradebook export specifications`
+### The Three Branch Tiers:
+1. **`main` (Protected — Defense-Ready / Production):**
+   * Represents release-quality, defense-ready software.
+   * **Direct pushes and force pushes are strictly disabled.**
+   * Merges into `main` occur only from `staging` via Pull Request upon completing a Milestone.
+2. **`staging` (Protected — Active Integration):**
+   * The shared integration branch where all tested feature branches merge.
+   * End-to-end integration testing (Android phone connecting to the Tauri server over local Wi-Fi) happens here.
+   * **Direct pushes are disabled.** All code must arrive via Pull Request with Lead Developer approval.
+3. **Working Branches (`feat/*`, `fix/*`, `docs/*`, `test/*`):**
+   * Created off of `staging`:
+     ```bash
+     git checkout staging
+     git pull origin staging
+     git checkout -b feat/server-mdns-beacon
+     ```
+   * Scope must be focused on a single issue. Never mix mobile, desktop, and server changes in one branch unless implementing a shared API schema contract.
 
 ---
 
-## 4. Pull Request & Review Process
+## 2. Pull Request (PR) Rules & Lifecycle
 
-1. **Link the Issue:** Every PR must address an existing GitHub issue (e.g., `Closes #4`).
-2. **Complete the PR Template:** Fill out the checklist in `.github/PULL_REQUEST_TEMPLATE.md`.
-3. **Offline Verification:** Test your changes with the internet disconnected (router LAN only).
-4. **Peer Review:** At least one group member must review and approve before merging to `main`.
+Before opening a Pull Request targeting `staging`, ensure you satisfy all requirements:
+
+### The PR Lifecycle:
+1. **Branch Off `staging`:** Always base feature branches on latest `staging`.
+2. **Commit Atomically:** Follow Conventional Commits format (`feat:`, `fix:`, `docs:`, `test:`).
+3. **Fill the PR Template:** Complete all sections in `.github/PULL_REQUEST_TEMPLATE.md`.
+4. **Link the Issue:** Explicitly link the tracked issue in the description (e.g., `Closes #4`).
+5. **Attach Verification Evidence:** Attach a log snippet, terminal output, or screenshot proving your changes work on local LAN with zero internet connection.
+6. **Lead Developer Code Review:** The Lead Developer will audit your PR using the `lead-companion` protocol.
+   * If approved: The Lead Developer merges using **Squash and Merge** to maintain a clean git history.
+   * If changes requested: Address feedback directly on your branch and push updates.
+
+---
+
+## 3. The Five Fatal PR Rejection Rules
+
+Any Pull Request containing any of the following will be **immediately rejected**:
+
+1. **Cloud Leakage:** Importing Firebase, Google Play APIs, external CDNs, Google Fonts, or remote analytics. Everything must be 100% offline LAN.
+2. **Hardware RAM Crashes:** Unoptimized mobile heap allocations (> 250MB) or attempting on-device SLM inference without verifying `physical RAM >= 6GB`.
+3. **Socratic AI Leaks:** Providing direct answers, solution formulas, or homework keys in prompts.
+4. **Quiz Lockout Bypass:** Any pathway that allows the AI tutor to run during an active timed quiz.
+5. **Accessibility Regressions:** Touch targets smaller than 48dp (preferred 56dp) or hardcoding English strings without Filipino localization keys.
+
+---
+
+## 4. Useful Git Commands for Team Members
+
+```bash
+# Start a new feature branch:
+git checkout staging
+git pull origin staging
+git checkout -b feat/mobile-camera-capture
+
+# Commit with Conventional Commits:
+git add .
+git commit -m "feat(mobile): implement CameraX capture with JPEG compression"
+
+# Push to GitHub:
+git push -u origin feat/mobile-camera-capture
+# Then open a PR targeting 'staging' on GitHub!
+```
