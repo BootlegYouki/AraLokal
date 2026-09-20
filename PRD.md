@@ -1,7 +1,7 @@
 # Product Requirements Document (PRD)
 
 **Project Title:** Offline LAN-Based Classroom Management System with Hybrid Socratic SLM Tutor and Paperless Assessment Engine 
-**Working Codename:** AraLokal 
+**Working Codename:** L.A.R.A. 
 **Document Version:** 1.2.0 
 **Target Release Date:** Academic Year 2026–2027 Capstone Cycle 
 **Target Environment:** Philippine Public Elementary Schools (DepEd Grades 1–6), Rural Campuses, and Zero-Internet Classrooms 
@@ -11,7 +11,7 @@
 ## 1. Executive Summary & Context
 
 ### 1.1 Project Overview
-AraLokal is a zero-internet, local-area-network (LAN) classroom management platform engineered as an offline alternative to Google Classroom. It pairs an offline-first learning management system (LMS) with an embedded, local Small Language Model (SLM) based on **MiniCPM5-2B**.
+L.A.R.A. is a zero-internet, local-area-network (LAN) classroom management platform engineered as an offline alternative to Google Classroom. It pairs an offline-first learning management system (LMS) with an embedded, local Small Language Model (SLM) based on **MiniCPM5-2B**.
 
 The system operates across three interconnected applications:
 1. **Local Hub (Server):** A standalone desktop application (Tauri + Rust/Node) hosted on a teacher’s laptop or school PC. It acts as the local source of truth, hosts a captive download portal with visual onboarding, brokers WebSocket events, manages file submissions, and runs an SLM inference server.
@@ -21,8 +21,8 @@ The system operates across three interconnected applications:
 ### 1.2 The Philippine Context & Research Motivation
 * **High Smartphone Penetration vs. Absent Connectivity:** IDC and Canalys (2024) market reports demonstrate that Transsion Holdings (Infinix, TECNO, itel) dominates the Philippine smartphone market with a 37.3% share, followed by realme (13.3%) and Xiaomi. More than 50% of shipped phones are entry-level devices under $100 (~₱3,500–₱5,500). Filipino elementary pupils commonly have physical access to these household smartphones. However, persistent mobile data costs, lack of campus broadband, and rural network dead-zones render cloud-based LMS solutions (Google Classroom, MS Teams, Canvas) unusable.
 * **DepEd Teacher Financial & Logistical Burden:** Public elementary teachers routinely shoulder out-of-pocket expenses for paper and printing to produce daily worksheets, weekly formative tests, and quarterly summative assessments. A paperless, offline LAN assessment engine removes recurring reproduction expenses.
-* **Hardware Realities (The RAM Bottleneck):** The vast majority of student devices feature 3GB or 4GB of physical RAM. Because Android and vendor UI skins occupy 1.8GB–2.2GB, usable app headroom is strictly ~800MB–1.2GB. Running an unoptimized 2B model on-device triggers out-of-memory (LMK/OOM) crashes. AraLokal solves this via an adaptive hybrid architecture: the Local Hub executes the model for low-spec phones, while capable devices (≥6GB RAM) run 100% on-device.
-* **Pedagogical Alignment:** Mainstream commercial LLMs provide answers outright, eroding critical thinking. AraLokal’s embedded SLM is engineered with strict Socratic system prompts, guiding elementary pupils step-by-step using teacher-provided materials without divulging final answers.
+* **Hardware Realities (The RAM Bottleneck):** The vast majority of student devices feature 3GB or 4GB of physical RAM. Because Android and vendor UI skins occupy 1.8GB–2.2GB, usable app headroom is strictly ~800MB–1.2GB. Running an unoptimized 2B model on-device triggers out-of-memory (LMK/OOM) crashes. L.A.R.A. solves this via an adaptive hybrid architecture: the Local Hub executes the model for low-spec phones, while capable devices (≥6GB RAM) run 100% on-device.
+* **Pedagogical Alignment:** Mainstream commercial LLMs provide answers outright, eroding critical thinking. L.A.R.A.’s embedded SLM is engineered with strict Socratic system prompts, guiding elementary pupils step-by-step using teacher-provided materials without divulging final answers.
 
 ---
 
@@ -52,7 +52,7 @@ flowchart TD
  Captive["Captive Web Portal (Port 8080)<br/>• APK & Desktop Installers<br/>• 3-Step Sideload Guide"]
  RestEngine["REST API & File Server (Port 8080)<br/>• Handouts (PDF/TXT)<br/>• Videos (HTTP Range 206)<br/>• Photo Submissions"]
  WsBroker["WebSocket Realtime Broker (Port 8081)<br/>• Live Quiz Sync & Timers<br/>• Announcements Push<br/>• Student Presence"]
- Discovery["Discovery Service<br/>• mDNS (_aralokal._tcp.local)<br/>• UDP Subnet Beacon (255.255.255.255:8888)"]
+ Discovery["Discovery Service<br/>• mDNS (_lara._tcp.local)<br/>• UDP Subnet Beacon (255.255.255.255:8888)"]
  HubAI["Hub SLM Engine (MiniCPM5-2B)<br/>• llama-server (4-bit GGUF)<br/>• FIFO Inference Queue"]
  CentralDB[("Central SQLite DB<br/>• Authoritative Store<br/>• Gradebook Exporter (.xlsx/.csv)")]
  end
@@ -85,22 +85,22 @@ flowchart TD
 
 ### 3.1 Network Discovery & Connection Lifecycle
 1. **Zero-Configuration Discovery:**
- * **mDNS / Zeroconf:** Local Hub advertises service as `_aralokal._tcp.local` on port 8080.
+ * **mDNS / Zeroconf:** Local Hub advertises service as `_lara._tcp.local` on port 8080.
  * **UDP Broadcast Beacon:** Hub broadcasts a lightweight JSON beacon every 3 seconds to subnet broadcast address (`255.255.255.255:8888`):
  ```json
- {"app": "aralokal", "version": "1.2.0", "name": "Grade 4 - Room 102", "ip": "192.168.1.50", "http_port": 8080, "ws_port": 8081}
+ {"app": "lara", "version": "1.2.0", "name": "Grade 4 - Room 102", "ip": "192.168.1.50", "http_port": 8080, "ws_port": 8081}
  ```
  * **Manual IP Fallback:** Client provides a manual connection field where pupils/teachers can enter the host IP shown on the Hub GUI (e.g., `192.168.1.50:8080`).
 2. **Captive Distribution Portal with Visual Sideloading Guide (HTTP):**
  * Hub serves a responsive HTML landing page at `http://<hub-ip>:8080/download`.
  * Hosts:
- * `AraLokal-Student.apk` (Android client)
- * `AraLokal-Desktop-Setup.exe` / `.deb` (Desktop client)
+ * `L.A.R.A.-Student.apk` (Android client)
+ * `L.A.R.A.-Desktop-Setup.exe` / `.deb` (Desktop client)
  * Quantized model weight bundles (`minicpm-2b-q4.gguf`) for optional on-device AI.
  * **3-Step Visual Installation Guide on Web Portal:**
- * *Step 1:* Tap the large **"Download AraLokal (Android)"** button.
+ * *Step 1:* Tap the large **"Download L.A.R.A. (Android)"** button.
  * *Step 2:* When prompted by Android browser, tap **Settings** Toggle on **"Allow from this source"**.
- * *Step 3:* Tap **Install** Open AraLokal and enter your Name & Student ID.
+ * *Step 3:* Tap **Install** Open L.A.R.A. and enter your Name & Student ID.
 3. **Data Communication Protocols:**
  * **HTTP/1.1 REST (Port 8080):** Large binary transfers (APKs, PDF handouts, MP4 video streams, student homework photo submissions) with HTTP Byte-Range support (`Range: bytes=X-`).
  * **WebSocket (Port 8081):** Real-time bidirectional event bus (announcements push, live quiz synchronization, automated timeout enforcement, instant grade delivery, and Hub-assisted SLM token streaming).
@@ -192,7 +192,7 @@ sequenceDiagram
 
 ---
 
-## 5. Bilingual Socratic AI Tutor System (AraLokal AI)
+## 5. Bilingual Socratic AI Tutor System (L.A.R.A. AI)
 
 ### 5.1 Model Specifications
 * **Target Model:** **MiniCPM5-2B (Int4 Quantized / Q4_K_M GGUF)**
@@ -230,14 +230,14 @@ flowchart TD
 
 ### 5.3 Bilingual Localization & Persona Design
 * **Interface Language:** Toggle between **English** and **Filipino** in Settings.
-* **Socratic Persona:** "AraLokal AI", a friendly, patient, and encouraging guide adapted for Filipino elementary pupils (Grades 1 to 6).
-* **Language Agility:** AraLokal AI understands and responds in the student's selected language (English or natural conversational Filipino / Taglish standard in DepEd classrooms).
-* **Interaction Trigger:** Located inside the Material Viewer as a floating button: **"Magtanong kay AraLokal AI" / "Ask AraLokal AI"**.
+* **Socratic Persona:** "L.A.R.A. AI", a friendly, patient, and encouraging guide adapted for Filipino elementary pupils (Grades 1 to 6).
+* **Language Agility:** L.A.R.A. AI understands and responds in the student's selected language (English or natural conversational Filipino / Taglish standard in DepEd classrooms).
+* **Interaction Trigger:** Located inside the Material Viewer as a floating button: **"Magtanong kay L.A.R.A. AI" / "Ask L.A.R.A. AI"**.
 * **Grounding:** The prompt binds the pre-extracted text of the active lesson document.
 
 * **Bilingual System Prompt Template:**
  ```text
- You are "AraLokal AI", a friendly and patient Socratic learning guide for Filipino elementary pupils (Grades 1 to 6).
+ You are "L.A.R.A. AI", a friendly and patient Socratic learning guide for Filipino elementary pupils (Grades 1 to 6).
  Your objective is to guide the student to discover answers independently.
 
  LANGUAGE INSTRUCTION:
@@ -261,7 +261,7 @@ flowchart TD
 To prevent the teacher's laptop from overloading when multiple low-RAM devices request hints simultaneously:
 * Hub configures `llama-server` with **2–4 parallel inference slots**.
 * Additional requests enter a **FIFO Queue**.
-* The pupil’s screen displays real-time queue position: *"Nag-iisip si AraLokal AI... Pangalawa ka sa pila (~4s)"*.
+* The pupil’s screen displays real-time queue position: *"Nag-iisip si L.A.R.A. AI.. Pangalawa ka sa pila (~4s)"*.
 
 ---
 

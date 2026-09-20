@@ -1,4 +1,4 @@
-# AraLokal 
+# L.A.R.A. 
 
 > **Offline LAN-Based Classroom Management System with Hybrid Socratic SLM Tutor and Paperless Assessment Engine** 
 > *Targeted for Philippine Public Elementary Schools (DepEd Grades 1–6), Rural Campuses, and Zero-Internet Classrooms.*
@@ -7,12 +7,12 @@
 
 ## Overview
 
-**AraLokal** is a zero-internet, local-area-network (LAN) classroom platform designed as an offline alternative to Google Classroom. It pairs an offline-first learning management system (LMS) with an embedded, local Small Language Model (SLM) based on **MiniCPM5-2B**.
+**L.A.R.A.** is a zero-internet, local-area-network (LAN) classroom platform designed as an offline alternative to Google Classroom. It pairs an offline-first learning management system (LMS) with an embedded, local Small Language Model (SLM) based on **MiniCPM5-2B**.
 
-Addressing the Philippine reality where **over 50% of student smartphones are entry-level 3GB/4GB RAM devices (Infinix, TECNO, itel, realme)** and public school teachers shoulder out-of-pocket photocopying expenses, AraLokal:
+Addressing the Philippine reality where **over 50% of student smartphones are entry-level 3GB/4GB RAM devices (Infinix, TECNO, itel, realme)** and public school teachers shoulder out-of-pocket photocopying expenses, L.A.R.A.:
 1. Operates **100% offline** over a standard Wi-Fi router or teacher's laptop hotspot.
 2. Eliminates paper test questionnaires through a synchronized, **timed paperless quiz engine** with instant auto-grading.
-3. Provides a **Socratic AI Tutor (AraLokal AI)** grounded in teacher-provided lesson materials that guides pupils step-by-step in English and Filipino without revealing direct answers.
+3. Provides a **Socratic AI Tutor (L.A.R.A. AI)** grounded in teacher-provided lesson materials that guides pupils step-by-step in English and Filipino without revealing direct answers.
 4. Uses an **adaptive hybrid AI pipeline**: streams tokens over WebSocket from the Local Hub for budget 3GB/4GB phones, while capable devices (≥6GB RAM) execute 100% on-device via `llama.cpp`.
 
 ---
@@ -29,7 +29,7 @@ flowchart TD
  Captive["Captive Web Portal (Port 8080)<br/>• APK & Desktop Installers<br/>• 3-Step Sideload Guide"]
  RestEngine["REST API & File Server (Port 8080)<br/>• Handouts (PDF/TXT)<br/>• Videos (HTTP Range 206)<br/>• Photo Submissions"]
  WsBroker["WebSocket Realtime Broker (Port 8081)<br/>• Live Quiz Sync & Timers<br/>• Announcements Push<br/>• Student Presence"]
- Discovery["Discovery Service<br/>• mDNS (_aralokal._tcp.local)<br/>• UDP Subnet Beacon (255.255.255.255:8888)"]
+ Discovery["Discovery Service<br/>• mDNS (_lara._tcp.local)<br/>• UDP Subnet Beacon (255.255.255.255:8888)"]
  HubAI["Hub SLM Engine (MiniCPM5-2B)<br/>• llama-server (4-bit GGUF)<br/>• FIFO Inference Queue"]
  CentralDB[("Central SQLite DB<br/>• Authoritative Store<br/>• Gradebook Exporter (.xlsx/.csv)")]
  end
