@@ -122,6 +122,13 @@ flowchart TD
 
 ---
 
+---
+
+## Live Material Design 3 Reference
+
+* **Live Interactive Design System:** [https://design-system-two-wheat.vercel.app](https://design-system-two-wheat.vercel.app)
+* **Local Source:** [](./design-system/index.html)
+
 ## Full Product Requirements Document
 
 The complete, exhaustive engineering and academic specification is documented in [PRD.md](./PRD.md).
