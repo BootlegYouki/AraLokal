@@ -124,6 +124,20 @@ flowchart TD
 
 ---
 
+---
+
+## Project Tracks & Milestone Roadmap
+
+The repository is structured into 5 parallel delivery tracks so teammates can develop without waiting on each other:
+
+| Track Milestone | Team & Scope | Focus Areas |
+| :--- | :--- | :--- |
+| **[Track 1: Mobile Project](https://github.com/BootlegYouki/L.A.R.A/milestone/1)** | Android Team () | Jetpack Compose M3 UI, Room SQLite, CameraX homework capture, Media3 player, local quiz flow, llama.cpp JNI. |
+| **[Track 2: Desktop Project](https://github.com/BootlegYouki/L.A.R.A/milestone/2)** | Desktop Team () | Tauri 2.x + React 19 + Tailwind, local SQLite, HTML5 video player, Quiz Builder wizard, bundled llama.cpp sidecar. |
+| **[Track 3: Server Project](https://github.com/BootlegYouki/L.A.R.A/milestone/3)** | Backend Team () | Tauri desktop host daemon, central SQLite DB, captive portal (/download), HTTP 206 video streaming, llama-server FIFO queue, DepEd USB export. |
+| **[Track 4: LAN Connectivity](https://github.com/BootlegYouki/L.A.R.A/milestone/4)** | Shared Integration Bridge | mDNS & UDP discovery, Class Code enrollment with teacher approval gate, WebSocket live quiz timers, and SQLite delta-sync. |
+| **[Track 5: Testing & Defense](https://github.com/BootlegYouki/L.A.R.A/milestone/5)** | QA & Capstone Evaluation | 40-device local router stress test (WAN unplugged), budget phone battery/RAM profiling, DepEd teacher SUS evaluation (>=80), thesis manuscript. |
+
 ## Live Material Design 3 Reference
 
 * **Live Interactive Design System:** [https://lara-design-system.vercel.app](https://lara-design-system.vercel.app)
