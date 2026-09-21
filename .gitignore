@@ -1,1 +1,153 @@
-.vercel
+# ==============================================================================
+# L.A.R.A — Universal Git Ignore
+# Covers Android (Kotlin/NDK), Desktop (Tauri/React), Server (Rust/Node), and AI
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Android Native & Gradle (mobile/)
+# ------------------------------------------------------------------------------
+.gradle/
+build/
+app/build/
+**/build/
+captures/
+
+# Local SDK & keystores (Never commit local SDK paths or private signing keys!)
+local.properties
+*.jks
+*.keystore
+*.p12
+
+# NDK & CMake C++ artifacts (llama.cpp JNI build directories)
+.cxx/
+**/CMakeCache.txt
+**/CMakeFiles/
+**/cmake_install.cmake
+**/Makefile
+
+# Packaged Android Application binaries
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# Memory heap dumps
+*.hprof
+
+# ------------------------------------------------------------------------------
+# 2. Rust & Cargo (server/ and desktop/src-tauri/)
+# ------------------------------------------------------------------------------
+target/
+**/target/
+**/*.rs.bk
+*.pdb
+
+# Tauri build artifacts
+desktop/src-tauri/WixTools/
+server/src-tauri/WixTools/
+*.bundle
+*.msi
+*.deb
+*.AppImage
+
+# ------------------------------------------------------------------------------
+# 3. Node.js, Web & Frontend (desktop/, server/, design-system/)
+# ------------------------------------------------------------------------------
+node_modules/
+**/node_modules/
+.pnpm-store/
+.yarn/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs & caches
+dist/
+**/dist/
+out/
+.output/
+.parcel-cache/
+.turbo/
+
+# Vercel deployment cache
+.vercel/
+
+# Environment configuration variables
+.env
+.env.local
+.env.*.local
+*.env
+
+# ------------------------------------------------------------------------------
+# 4. AI Models & Large Binary Weights
+# (Quantized GGUF files must be downloaded via captive portal, never committed to git!)
+# ------------------------------------------------------------------------------
+*.gguf
+*.bin
+*.safetensors
+*.litertlm
+*.onnx
+*.pt
+*.pth
+models/
+weights/
+checkpoints/
+
+# ------------------------------------------------------------------------------
+# 5. Runtime Storage, SQLite Databases & Uploaded Media
+# ------------------------------------------------------------------------------
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
+
+# Runtime media directories (uploaded lesson PDFs, videos, student photos)
+uploads/
+**/uploads/
+media/
+**/media/
+storage/
+**/storage/
+
+# Backup archives
+*.lara-backup
+*.tar.gz
+*.zip
+
+# ------------------------------------------------------------------------------
+# 6. IDEs, Editors & Operating Systems
+# ------------------------------------------------------------------------------
+# JetBrains / Android Studio
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Operating System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Temporary files & swap
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
