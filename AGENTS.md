@@ -29,6 +29,15 @@ The engineering team is strictly structured into three decoupled project streams
    * Gatekeeps merges into `staging` and releases to `main`.
    * Enforces the zero-internet policy, budget hardware memory limits, and Socratic pedagogical rules.
 
+### Modular Architecture & Rule Documents
+Every contributor and AI agent must consult the dedicated rule files in `rules/` for their specific domain:
+* **Database & Delta-Sync:** [`rules/database-and-sync.md`](./rules/database-and-sync.md)
+* **Quiz Engine & Anti-Cheat:** [`rules/quiz-and-anti-cheat.md`](./rules/quiz-and-anti-cheat.md)
+* **LAN Networking & Protocols:** [`rules/networking-and-lan.md`](./rules/networking-and-lan.md)
+* **Socratic AI & SLM Guardrails:** [`rules/socratic-ai-guardrails.md`](./rules/socratic-ai-guardrails.md)
+* **UI/UX & Elementary Accessibility:** [`rules/ui-and-accessibility.md`](./rules/ui-and-accessibility.md)
+* **Team Workflow & PR Criteria:** [`rules/team-workflow-and-prs.md`](./rules/team-workflow-and-prs.md)
+
 ---
 
 ## 1. Non-Negotiable System Invariants
