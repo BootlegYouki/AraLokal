@@ -126,17 +126,20 @@ flowchart TD
 
 ---
 
-## Project Tracks & Milestone Roadmap
+---
 
-The repository is structured into 5 parallel delivery tracks so teammates can develop without waiting on each other:
+## Project Sprint Roadmap & Execution Order
 
-| Track Milestone | Team & Scope | Focus Areas |
-| :--- | :--- | :--- |
-| **[Track 1: Mobile Project](https://github.com/BootlegYouki/L.A.R.A/milestone/1)** | Android Team () | Jetpack Compose M3 UI, Room SQLite, CameraX homework capture, Media3 player, local quiz flow, llama.cpp JNI. |
-| **[Track 2: Desktop Project](https://github.com/BootlegYouki/L.A.R.A/milestone/2)** | Desktop Team () | Tauri 2.x + React 19 + Tailwind, local SQLite, HTML5 video player, Quiz Builder wizard, bundled llama.cpp sidecar. |
-| **[Track 3: Server Project](https://github.com/BootlegYouki/L.A.R.A/milestone/3)** | Backend Team () | Tauri desktop host daemon, central SQLite DB, captive portal (/download), HTTP 206 video streaming, llama-server FIFO queue, DepEd USB export. |
-| **[Track 4: LAN Connectivity](https://github.com/BootlegYouki/L.A.R.A/milestone/4)** | Shared Integration Bridge | mDNS & UDP discovery, Class Code enrollment with teacher approval gate, WebSocket live quiz timers, and SQLite delta-sync. |
-| **[Track 5: Testing & Defense](https://github.com/BootlegYouki/L.A.R.A/milestone/5)** | QA & Capstone Evaluation | 40-device local router stress test (WAN unplugged), budget phone battery/RAM profiling, DepEd teacher SUS evaluation (>=80), thesis manuscript. |
+The project is structured into 6 chronological sprints where Mobile, Desktop, and Server build in parallel:
+
+| Sprint Milestone | Mobile Team (Android) | Desktop Team (Tauri) | Server Team (Backend) | Integrated Outcome |
+| :--- | :--- | :--- | :--- | :--- |
+| **[Sprint 1](https://github.com/BootlegYouki/L.A.R.A/milestone/1): Scaffolding & Discovery** | Compose M3, Room DB, LAN Scanner UI | Tauri + React, SQLite, LAN Discovery | Tauri host daemon, SQLite schema, UDP beacon, captive portal | Devices connect over Wi-Fi with zero internet |
+| **[Sprint 2](https://github.com/BootlegYouki/L.A.R.A/milestone/2): Roles & Delta-Sync** | Student/Teacher login, Class Code join, Approval UI | Login UI, Course cards, Teacher roster table | Class Code generator, approval queue, delta-sync endpoints | Students join class with teacher approval |
+| **[Sprint 3](https://github.com/BootlegYouki/L.A.R.A/milestone/3): Content & Media** | Announcement feed, Media3 player, CameraX photo capture | Announcements list, HTML5 video player, homework upload | PDF text chunker, HTTP 206 video stream (2MB/s), photo receiver | Video streaming & handwritten homework submission |
+| **[Sprint 4](https://github.com/BootlegYouki/L.A.R.A/milestone/4): Paperless Quizzes** | Full-screen timed quiz, countdown pill, anti-cheat lock | Timed quiz runner, Teacher Quiz Builder, score matrix | WebSocket quiz sync, auto-grader, DepEd Excel export, USB backup | Synchronized paperless quiz with instant grades |
+| **[Sprint 5](https://github.com/BootlegYouki/L.A.R.A/milestone/5): Socratic AI Tutor** | RAM detection router, Socratic chat sheet, llama.cpp JNI | Laptop CPU/GPU llama.cpp sidecar, Socratic chat drawer | llama-server (MiniCPM5-2B) with FIFO queue, quiz lockout | AI tutor guides without giving direct answers |
+| **[Sprint 6](https://github.com/BootlegYouki/L.A.R.A/milestone/6): Usability & Defense** | Physical phone profiling (battery, heap <250MB) | Lab PC testing & contrast audit | 40-device local router stress test (WAN unplugged) | DepEd teacher SUS survey (>=80), manuscript tables |
 
 ## Live Material Design 3 Reference
 
