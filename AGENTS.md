@@ -6,6 +6,31 @@ All AI agents and human contributors must adhere strictly to these rules.
 
 ---
 
+## 0. Team Organization & Three Project Streams
+
+The engineering team is strictly structured into three decoupled project streams, overseen by the Lead Developer:
+
+1. **Mobile Project Team (`mobile/`):**
+   * **Scope:** Native Android Client (Kotlin 2.x + Jetpack Compose + Material 3).
+   * **Responsibilities:** Room SQLite offline caching, CameraX homework photo capture, Jetpack Media3 video playback, and JNI llama.cpp ARM64 bindings for capable devices.
+   * **Target Hardware:** 3GB/4GB RAM budget phones (Infinix, TECNO, itel, realme). Strict memory ceiling: heap < 250MB.
+
+2. **Desktop Project Team (`desktop/`):**
+   * **Scope:** Cross-Platform Desktop Client (Tauri 2.x + React 19 + TypeScript + Tailwind CSS).
+   * **Responsibilities:** School computer lab (DepEd PC packages) & student laptop client, local SQLite via Tauri plugin, bundled llama.cpp sidecar execution on laptops with >= 4GB RAM.
+
+3. **Server Project Team (`server/`):**
+   * **Scope:** Local Hub Server & Teacher Host Application (Tauri + Rust/Node backend engine).
+   * **Responsibilities:** mDNS responder (`_lara._tcp.local`), UDP subnet broadcast beacon (`:8888`), central SQLite database, captive download portal (`:8080/download`), HTTP 206 video streaming, WebSocket real-time event broker, and llama-server multi-slot FIFO queue.
+
+4. **Lead Developer (Tech Lead & Gatekeeper):**
+   * Oversees all three projects.
+   * Reviews all pull requests using the `lead-companion` protocol.
+   * Gatekeeps merges into `staging` and releases to `main`.
+   * Enforces the zero-internet policy, budget hardware memory limits, and Socratic pedagogical rules.
+
+---
+
 ## 1. Non-Negotiable System Invariants
 
 ### 1.1 Zero Internet Dependency (LAN Only)

@@ -4,6 +4,16 @@ Welcome to the **L.A.R.A** repository. As a contributor, you are responsible for
 
 ---
 
+## 0. Team Streams (Who Works on What)
+
+The engineering team is organized into three decoupled project streams:
+* **Mobile Team (`mobile/`):** Focuses exclusively on Kotlin, Jetpack Compose M3, Room DB, CameraX, and mobile performance on 3GB/4GB phones.
+* **Desktop Team (`desktop/`):** Focuses on Tauri 2.x, React 19, TypeScript, Tailwind CSS, and laptop `llama.cpp` execution.
+* **Server Team (`server/`):** Focuses on the Local Hub backend (mDNS, UDP beacons, SQLite, WebSockets, video streaming, and `llama-server`).
+* **Lead Developer:** Reviews and approves all PRs before they enter `staging`.
+
+---
+
 ## 1. Branching Architecture
 
 We follow an adapted GitFlow branching model tailored for multi-module capstone development:
